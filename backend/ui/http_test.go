@@ -51,7 +51,7 @@ type HTTPTest struct {
 	expectedTodos  []entities.Todo
 }
 
-// Actual test function
+// Actual test function‘
 // For learning: read up on go's http package
 func TestHTTP(t *testing.T) {
 
