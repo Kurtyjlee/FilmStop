@@ -2,6 +2,7 @@ package usecases_test
 
 import (
 	"fmt"
+	"reflect"
 	"testing"
 
 	"github.com/Kurtyjlee/photo-webapp/backend/entities"
@@ -30,7 +31,7 @@ func (BadTodosRepo) GetAllTodos() ([]entities.Todo, error) {
 	return nil, fmt.Errorf(("Something went wrong"))
 }
 
-// actual MockTodosRepo
+// Actual MockTodosRepo
 type MockTodosRepo struct{}
 
 func (MockTodosRepo) GetAllTodos() ([]entities.Todo, error) {
@@ -67,7 +68,7 @@ func TestGetTodos(t *testing.T) {
 			t.Fatalf("Expected err to be nil; Got %v", err)
 		}
 		// if todos not equal to dummyTodos
-		if todos == nil {
+		if !reflect.DeepEqual(todos, dummyTodos) {
 			t.Fatalf("Expected todos from dummyTodos; Got %v", todos)
 		}
 	})

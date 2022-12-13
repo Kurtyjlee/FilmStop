@@ -1,8 +1,7 @@
-package usecases
+package ui
 
 import "github.com/Kurtyjlee/photo-webapp/backend/entities"
 
-// Will GetAllTodos for this repository
-type TodosRespository interface {
+type Service interface {
 	GetAllTodos() ([]entities.Todo, error)
 }
