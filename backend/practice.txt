@@ -1,0 +1,34 @@
+package practice
+
+import (
+	"database/sql"
+
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
+)
+
+func practice() {
+	// mysql db connection
+	db, err := gorm.Open(mysql.Open("root:password@/photo-webapp"), &gorm.Config{})
+
+	if err != nil {
+		panic("Could not connect to the database")
+	}
+
+	db.AutoMigrate(&User{}, &City{})
+
+}
+
+type User struct {
+	gorm.Model
+	FirstName string         `gorm:"type:VARCHAR(30)"`
+	LastName  string         `gorm:"type:VARCHAR(30)"`
+	Email     sql.NullString `gorm:"unique; not null"`
+	Password  sql.NullString `gorm:"null"`
+	Cities    []City         `gorm:"many2many:user_cities"`
+}
+
+type City struct {
+	gorm.Model
+	Name string
+}
