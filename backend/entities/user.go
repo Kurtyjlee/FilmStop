@@ -2,9 +2,9 @@
 package entities
 
 type User struct {
-	Id        uint
-	FirstName string `gorm:"type:VARCHAR(30)"`
-	LastName  string `gorm:"type:VARCHAR(30)"`
-	Email     string `gorm:"unique"`
-	Password  []byte
+	Id        uint   `json:"id"`
+	FirstName string `json:"first_name" gorm:"type:VARCHAR(30)"`
+	LastName  string `json:"last_name" gorm:"type:VARCHAR(30)"`
+	Email     string `json:"email" gorm:"unique"`
+	Password  []byte `json:"-"`
 }
