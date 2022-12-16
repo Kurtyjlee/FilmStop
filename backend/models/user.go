@@ -1,5 +1,5 @@
 // User model
-package entities
+package models
 
 import "golang.org/x/crypto/bcrypt"
 

@@ -4,12 +4,12 @@ import (
 	"strconv"
 
 	"github.com/Kurtyjlee/photo-webapp/backend/database"
-	"github.com/Kurtyjlee/photo-webapp/backend/entities"
+	"github.com/Kurtyjlee/photo-webapp/backend/models"
 	"github.com/gofiber/fiber/v2"
 )
 
 func AllUsers(c *fiber.Ctx) error {
-	var users []entities.User
+	var users []models.User
 
 	database.DB.Find(&users)
 
@@ -17,7 +17,7 @@ func AllUsers(c *fiber.Ctx) error {
 }
 
 func CreateUser(c *fiber.Ctx) error {
-	var user entities.User
+	var user models.User
 
 	if err := c.BodyParser(&user); err != nil {
 		return err
@@ -34,7 +34,7 @@ func GetUser(c *fiber.Ctx) error {
 	// Getting the id from the url
 	id, _ := strconv.Atoi(c.Params("id"))
 
-	user := entities.User{
+	user := models.User{
 		Id: uint(id),
 	}
 
@@ -46,7 +46,7 @@ func GetUser(c *fiber.Ctx) error {
 func UpdateUser(c *fiber.Ctx) error {
 	id, _ := strconv.Atoi(c.Params("id"))
 
-	user := entities.User{
+	user := models.User{
 		Id: uint(id),
 	}
 
@@ -62,7 +62,7 @@ func UpdateUser(c *fiber.Ctx) error {
 func DeleteUser(c *fiber.Ctx) error {
 	id, _ := strconv.Atoi(c.Params("id"))
 
-	user := entities.User{
+	user := models.User{
 		Id: uint(id),
 	}
 

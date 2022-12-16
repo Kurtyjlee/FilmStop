@@ -1,7 +1,7 @@
 package database
 
 import (
-	"github.com/Kurtyjlee/photo-webapp/backend/entities"
+	"github.com/Kurtyjlee/photo-webapp/backend/models"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -18,5 +18,5 @@ func Connect() {
 	// To export the database
 	DB = db
 
-	db.AutoMigrate(&entities.User{})
+	db.AutoMigrate(&models.User{}, &models.Role{})
 }

@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/Kurtyjlee/photo-webapp/backend/database"
-	"github.com/Kurtyjlee/photo-webapp/backend/entities"
+	"github.com/Kurtyjlee/photo-webapp/backend/models"
 	"github.com/Kurtyjlee/photo-webapp/backend/util"
 	"github.com/gofiber/fiber/v2"
 )
@@ -27,7 +27,7 @@ func Register(c *fiber.Ctx) error {
 	}
 
 	// Registering the user
-	user := entities.User{
+	user := models.User{
 		FirstName: data["first_name"],
 		LastName:  data["last_name"],
 		Email:     data["email"],
@@ -48,7 +48,7 @@ func Login(c *fiber.Ctx) error {
 		return err
 	}
 
-	var user entities.User
+	var user models.User
 
 	database.DB.Where("email = ?", data["email"]).First(&user)
 
@@ -100,7 +100,7 @@ func User(c *fiber.Ctx) error {
 	id, _ := util.ParseJwt(cookie)
 
 	// Returning the user
-	var user entities.User
+	var user models.User
 
 	database.DB.Where("Id = ?", id).First(&user)
 
