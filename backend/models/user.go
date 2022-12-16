@@ -9,6 +9,8 @@ type User struct {
 	LastName  string `json:"last_name" gorm:"type:VARCHAR(30)"`
 	Email     string `json:"email" gorm:"unique"`
 	Password  []byte `json:"-"`
+	RoleId    uint   `json:"role_id"`
+	Role      Role   `json:"role" gorm:"foreignKey:RoleId"`
 }
 
 // Method for User
