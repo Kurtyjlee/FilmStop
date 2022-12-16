@@ -1,4 +1,3 @@
-// Registering
 package controllers
 
 import (
@@ -9,7 +8,6 @@ import (
 	"github.com/Kurtyjlee/photo-webapp/backend/entities"
 	"github.com/Kurtyjlee/photo-webapp/backend/util"
 	"github.com/gofiber/fiber/v2"
-	"golang.org/x/crypto/bcrypt"
 )
 
 func Register(c *fiber.Ctx) error {
@@ -28,16 +26,13 @@ func Register(c *fiber.Ctx) error {
 		})
 	}
 
-	// Hashing the password; Converting string to byte
-	password, _ := bcrypt.GenerateFromPassword([]byte(data["password"]), 14)
-
 	// Registering the user
 	user := entities.User{
 		FirstName: data["first_name"],
 		LastName:  data["last_name"],
 		Email:     data["email"],
-		Password:  password,
 	}
+	user.SetPassword(data["password"])
 
 	// inputting user into the database
 	database.DB.Create(&user)
@@ -66,7 +61,7 @@ func Login(c *fiber.Ctx) error {
 	}
 
 	// Comparing passwords
-	if err := bcrypt.CompareHashAndPassword(user.Password, []byte(data["password"])); err != nil {
+	if err := user.ComparePassword(data["password"]); err != nil {
 		c.Status(400)
 		return c.JSON(fiber.Map{
 			"message": "Incorrect password",
