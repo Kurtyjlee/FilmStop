@@ -9,11 +9,11 @@ import (
 )
 
 func AllUsers(c *fiber.Ctx) error {
-	var users []models.User
 
-	database.DB.Preload("Role").Find(&users)
+	// Paginated
+	page, _ := strconv.Atoi(c.Query("page", "1"))
 
-	return c.JSON(users)
+	return c.JSON(models.Paginate(database.DB, &models.User{}, page))
 }
 
 func CreateUser(c *fiber.Ctx) error {

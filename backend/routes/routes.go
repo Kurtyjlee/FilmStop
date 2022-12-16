@@ -37,4 +37,7 @@ func Setup(app *fiber.App) {
 	app.Get("/api/posts/:id", controllers.GetPost)
 	app.Put("/api/posts/:id", controllers.UpdatePost)
 	app.Delete("/api/posts/:id", controllers.DeletePost)
+
+	app.Post("/api/uploads/image", controllers.UploadImage)
+	app.Static("/api/uploads/image", "./uploads") // Serve static files
 }
