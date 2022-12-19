@@ -21,7 +21,7 @@ func (post *Post) Count(db *gorm.DB) int64 {
 func (post *Post) Take(db *gorm.DB, limit int, offset int) interface{} {
 	var posts []Post
 
-	db.Offset(offset).Limit(limit).Find(&posts)
+	db.Preload("Comments").Offset(offset).Limit(limit).Find(&posts)
 
 	return posts
 }
