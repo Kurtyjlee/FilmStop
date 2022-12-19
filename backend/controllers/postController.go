@@ -4,11 +4,16 @@ import (
 	"strconv"
 
 	"github.com/Kurtyjlee/photo-webapp/backend/database"
+	"github.com/Kurtyjlee/photo-webapp/backend/middleware"
 	"github.com/Kurtyjlee/photo-webapp/backend/models"
 	"github.com/gofiber/fiber/v2"
 )
 
 func AllPosts(c *fiber.Ctx) error {
+	if err := middleware.IsAuthorised(c, "posts"); err != nil {
+		return err
+	}
+
 	// Paginated
 	page, _ := strconv.Atoi(c.Query("page", "1"))
 
@@ -16,6 +21,9 @@ func AllPosts(c *fiber.Ctx) error {
 }
 
 func CreatePost(c *fiber.Ctx) error {
+	if err := middleware.IsAuthorised(c, "posts"); err != nil {
+		return err
+	}
 	var post models.Post
 
 	if err := c.BodyParser(&post); err != nil {
@@ -28,6 +36,9 @@ func CreatePost(c *fiber.Ctx) error {
 }
 
 func GetPost(c *fiber.Ctx) error {
+	if err := middleware.IsAuthorised(c, "posts"); err != nil {
+		return err
+	}
 	// Getting the id from the url
 	id, _ := strconv.Atoi(c.Params("id"))
 
@@ -41,6 +52,9 @@ func GetPost(c *fiber.Ctx) error {
 }
 
 func UpdatePost(c *fiber.Ctx) error {
+	if err := middleware.IsAuthorised(c, "posts"); err != nil {
+		return err
+	}
 	id, _ := strconv.Atoi(c.Params("id"))
 
 	post := models.Post{
@@ -57,6 +71,9 @@ func UpdatePost(c *fiber.Ctx) error {
 }
 
 func DeletePost(c *fiber.Ctx) error {
+	if err := middleware.IsAuthorised(c, "posts"); err != nil {
+		return err
+	}
 	id, _ := strconv.Atoi(c.Params("id"))
 
 	post := models.Post{

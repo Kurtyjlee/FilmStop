@@ -4,11 +4,15 @@ import (
 	"strconv"
 
 	"github.com/Kurtyjlee/photo-webapp/backend/database"
+	"github.com/Kurtyjlee/photo-webapp/backend/middleware"
 	"github.com/Kurtyjlee/photo-webapp/backend/models"
 	"github.com/gofiber/fiber/v2"
 )
 
 func AllRoles(c *fiber.Ctx) error {
+	if err := middleware.IsAuthorised(c, "roles"); err != nil {
+		return err
+	}
 	var roles []models.Role
 
 	database.DB.Preload("Permissions").Find(&roles)
@@ -17,6 +21,9 @@ func AllRoles(c *fiber.Ctx) error {
 }
 
 func CreateRole(c *fiber.Ctx) error {
+	if err := middleware.IsAuthorised(c, "roles"); err != nil {
+		return err
+	}
 	// Gives the Data Transfer Object
 	var roleDTO fiber.Map
 
@@ -46,10 +53,15 @@ func CreateRole(c *fiber.Ctx) error {
 
 	database.DB.Create(&role)
 
+	database.DB.Preload("Permissions").Find(&role)
+
 	return c.JSON(role)
 }
 
 func GetRole(c *fiber.Ctx) error {
+	if err := middleware.IsAuthorised(c, "roles"); err != nil {
+		return err
+	}
 	// Getting the id from the url
 	id, _ := strconv.Atoi(c.Params("id"))
 
@@ -63,6 +75,10 @@ func GetRole(c *fiber.Ctx) error {
 }
 
 func UpdateRole(c *fiber.Ctx) error {
+	if err := middleware.IsAuthorised(c, "roles"); err != nil {
+		return err
+	}
+
 	id, _ := strconv.Atoi(c.Params("id"))
 
 	var roleDTO fiber.Map
@@ -100,15 +116,25 @@ func UpdateRole(c *fiber.Ctx) error {
 
 	database.DB.Model(&role).Updates(role)
 
+	database.DB.Preload("Permissions").Find(&role)
+
 	return c.JSON(role)
 }
 
 func DeleteRole(c *fiber.Ctx) error {
+	if err := middleware.IsAuthorised(c, "roles"); err != nil {
+		return err
+	}
 	id, _ := strconv.Atoi(c.Params("id"))
 
 	role := models.Role{
 		Id: uint(id),
 	}
+
+	var result string
+
+	// Delete the old row_permissions
+	database.DB.Table("role_permissions").Where("role_id", id).Delete(&result)
 
 	database.DB.Delete(&role)
 
