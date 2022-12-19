@@ -122,3 +122,5 @@ func Logout(c *fiber.Ctx) error {
 		"message": "success",
 	})
 }
+
+// Might need to get the user profile
