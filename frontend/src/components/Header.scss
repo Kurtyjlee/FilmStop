@@ -1,10 +1,26 @@
-// Header class
-.page-header {
-  height: 6rem;
-  display: flex;
-  align-items: center;
-  background: #222222;
+.nav-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 1rem;
+  overflow: hidden;
+  background-color: #222222;
+}
+
+.nav-item {
+  float: left;
+}
+
+.nav-item a {
+  display: block;
   color: #FFFFFF;
-  // bottom-top left-right
-  padding: 0 2rem;
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Change the link color to #111 (black) on hover */
+.nav-item a:hover {
+  text-decoration: underline;
 }

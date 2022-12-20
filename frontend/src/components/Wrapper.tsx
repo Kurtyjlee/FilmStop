@@ -10,16 +10,8 @@ type WrapperProps = {
 export const Wrapper = (props: WrapperProps) => {
   return (
     <>
-      <Header/>
-      <div className="nav">
-        <ul className="App-header">  
-          <li>  
-            <Link to="/">Home</Link>  
-          </li>  
-          <li>  
-            <Link to="/users">User</Link>  
-          </li>   
-        </ul> 
+      <div>
+        <Header/>
       </div>
       {props.children}
     </>
