@@ -1,11 +1,14 @@
 import React from "react";
+import { Wrapper } from "../components/Wrapper";
 
 export const Home = () => {
   return (
-    <div className="home">
-      <h1 className="home-main-header">
-        This is the home page
-      </h1>
-    </div>
+    <Wrapper>
+      <div className="home">
+        <h1 className="home-main-header">
+          This is the home page
+        </h1>
+      </div>
+    </Wrapper>
   )
 }
