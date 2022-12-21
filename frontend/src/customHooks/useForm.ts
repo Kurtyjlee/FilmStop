@@ -15,7 +15,6 @@ export const useForm = (callback: any, initialState = {}) => {
 
   return {
     handleInputChange,
-    handleSubmit,
-    values
+    handleSubmit
   };
 }

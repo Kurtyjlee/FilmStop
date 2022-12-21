@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 
 export const Register = () => {
   
-  // All fields blank first
+  // All fields blank
   const initialState = {
     first_name: "",
     last_name: "",
@@ -14,9 +14,7 @@ export const Register = () => {
     password_confirm: ""
   };
 
-  const [registered, setRegistered] = useState({
-    registered: false
-  })
+  const [registered, setRegistered] = useState(false);
 
   async function registerCallback(values: any) {
     // send values to database
@@ -29,19 +27,17 @@ export const Register = () => {
     })
 
     // Let the page know that user has registered
-    setRegistered({
-      registered: true
-    })
+    setRegistered(true);
     
   }
 
-  const { values, handleInputChange, handleSubmit } = useForm(
+  const { handleInputChange, handleSubmit } = useForm(
     registerCallback,
     initialState
   );
   
   // After registering, navigate to the login page
-  if (registered.registered) {
+  if (registered) {
     return <Navigate to={'/login'} />;
   }
 
