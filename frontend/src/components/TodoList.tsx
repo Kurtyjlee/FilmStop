@@ -1,5 +1,5 @@
 import React from "react";
-import { Todo } from "../entities/Todo";
+import { Todo } from "../models/Todo";
 import { TodoItem } from "./TodoItem";
 import './TodoList.scss';
 

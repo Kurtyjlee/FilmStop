@@ -1,13 +1,32 @@
 import React from "react";
 import { Header } from "./Header";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Navigate } from "react-router-dom";
 
-// Component takes in elements
-type WrapperProps = {
-  children: React.ReactNode;
-};
+export const Wrapper = (props: any) => {
 
-export const Wrapper = (props: WrapperProps) => {
+  const [redirect, setRedirect] = useState(false);
+
+  // Ensure user has logged in
+  useEffect(() => {
+    (
+      async () => {
+        try {
+          await axios.get("user");
+        } catch (e) {
+          setRedirect(true);
+        }
+      }
+    )();
+  }, []);
+
+  // If user has not logged in
+  if (redirect) {
+    return <Navigate to="/login" />;
+  }
+
+  // Main header
   return (
     <>
       <div>
@@ -17,26 +36,3 @@ export const Wrapper = (props: WrapperProps) => {
     </>
   )
 }
-
-// // Class format
-// class Wrapper extends Component {
-//   render () {
-//     return (
-//       <>
-//         <Header/>
-//         <div className="nav">
-//           <ul className="App-header">  
-//             <li>  
-//               <Link to="/">Home</Link>  
-//             </li>  
-//             <li>  
-//               <Link to="/users">User</Link>  
-//             </li>   
-//           </ul> 
-//         </div>
-//       </>
-//     )
-//   }
-// }
-
-// export default Wrapper;

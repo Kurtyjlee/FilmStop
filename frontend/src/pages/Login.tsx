@@ -15,10 +15,10 @@ export const Login = () => {
 
   // Send value to server
   async function loginCallback(values: any) {
-    await axios.post("http://localhost:8000/api/login", {
+    await axios.post("login", {
       email: values.email,
       password: values.password
-    }, {withCredentials: true});
+    });
 
     setRedirect(true);
   }
@@ -38,7 +38,6 @@ export const Login = () => {
     <main className="form-login">
       <form onSubmit={handleSubmit}>
         <h1 className="login-header">Please Login</h1>
-
         <input 
           className="form-input" 
           placeholder="Email" 
@@ -46,7 +45,6 @@ export const Login = () => {
           required
           onChange={handleInputChange}
         />
-
         <input 
           className="form-input" 
           placeholder="Password"
@@ -55,9 +53,7 @@ export const Login = () => {
           required
           onChange={handleInputChange}
         />
-      
         <button type="submit">Login</button>
-
       </form>
     </main>
   )

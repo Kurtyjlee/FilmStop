@@ -18,7 +18,7 @@ export const Register = () => {
 
   async function registerCallback(values: any) {
     // send values to database
-    await axios.post("http://localhost:8000/api/register", {
+    await axios.post("register", {
       first_name: values.first_name,
       last_name: values.last_name,
       email: values.email,

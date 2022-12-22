@@ -1,26 +1,51 @@
 // For learning- this imports the scss file
 import './Header.scss';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { User } from '../models/User';
 import { Link } from 'react-router-dom';
 
 // Custom header component
 export const Header = () => {
+
+  const [user, setUser] = useState(new User());
+
+  useEffect(() => {
+    // To get an async function
+    (
+      async () => {
+        const {data} = await axios.get("user");
+        
+        setUser(new User(
+          data.id,
+          data.first_name,
+          data.last_name,
+          data.email
+        ));
+      }
+    )();
+  }, []);
+
+  const logout = async () => {
+    // Send empty data in the post request
+    await axios.post('logout', {});
+  }
+
   return (
-    // For learning- makes a header with a class name
+    <nav className="navbar">
+      <Link className="nav-brand" to="/">Photo-webapp</Link>
+
       <ul className="nav-list">  
-        <li className='nav-item'>  
-          <Link to="/">Photo Webapp</Link>  
-        </li>  
-        <li className='nav-item'>   
-          <Link to="/users">User</Link>  
-        </li>   
-        <li className='nav-item'>   
-          <Link to="/login">Login</Link>  
+        <li className="nav-item">
+          <Link to="/users">Users</Link>
         </li> 
-        <li className='nav-item'>   
-          <Link to="/register">Register</Link>  
+        <li className="nav-item">
+          <Link to="/profile">{user.name}</Link>
         </li> 
-    </ul> 
-    
-    
+        <li className="nav-item">
+          <Link to="/login" onClick={logout}>Sign out</Link>
+        </li> 
+      </ul> 
+    </nav>
   )
 }
