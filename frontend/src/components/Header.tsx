@@ -20,7 +20,8 @@ export const Header = () => {
           data.id,
           data.first_name,
           data.last_name,
-          data.email
+          data.email,
+          data.role
         ));
       }
     )();
@@ -36,6 +37,9 @@ export const Header = () => {
       <Link className="nav-brand" to="/">Photo-webapp</Link>
 
       <ul className="nav-list">  
+        <li className="nav-item">
+          <Link to="/posts">Posts</Link>
+        </li> 
         <li className="nav-item">
           <Link to="/users">Users</Link>
         </li> 
