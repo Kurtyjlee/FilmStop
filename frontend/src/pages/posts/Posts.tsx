@@ -2,23 +2,26 @@ import "./Posts.scss";
 
 import React from "react";
 import { Wrapper } from "../../components/Wrapper";
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Post } from "../../models/Post";
+import { Paginator } from "../../components/Paginator";
 
 export const Posts = () => {
   const [posts, setPosts] = useState([]);
+  const [page, setPage] = useState(1);
+  const [lastPage, setLastPage] = useState(0);
 
   useEffect(() => {
     (
       async () => {
-        const {data} = await axios.get("posts")
+        const {data} = await axios.get(`posts?page=${page}`)
 
         setPosts(data.data);
+        setLastPage(data.meta.last_page);
       }
     )()
-  }, []);
+  }, [page]);
 
   const del = async (id:number) => {
     if (window.confirm("Are you sure you want to delete?")) {
@@ -53,7 +56,7 @@ export const Posts = () => {
                   <td>{p.likes}</td>
                   <td>
                     <div className="bottom-nav-item">
-                      <a href={`users/${p.id}/edit`}
+                      <a href={`posts/${p.id}/edit`}
                       >Edit</a>
                       <a href="#"
                         onClick={() => del(p.id)}
@@ -66,22 +69,10 @@ export const Posts = () => {
           </tbody>
         </table>
       </div>
-
-      <nav className="bottom-bar">
-        <ul className="bottom-nav-list">
-          <li className="bottom-nav-item">
-            <a href="#">Previous</a>
-          </li>
-          <li className="bottom-nav-item">
-            <a href="#">Next</a>
-          </li>
-        </ul>
-        <ul className="bottom-nav-list">
-          <li className="bottom-nav-item">
-            <Link to="/users/create">add</Link>
-          </li>
-        </ul>
-      </nav>
+      
+      {/* Pagination */}
+      <Paginator page={page} lastPage={lastPage} pageChanged={setPage}/>
+      
     </Wrapper>
   )
 }
