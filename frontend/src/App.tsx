@@ -8,6 +8,7 @@ import { Login } from './pages/Login';
 import { UserCreate } from './pages/UserCreate';
 import { UserEdit } from './pages/UserEdit';
 import { Posts } from './pages/posts/Posts';
+import { PostCreate } from './pages/posts/PostCreate';
 
 // Main app
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path={'/users/create'} element={<UserCreate/>} />
           <Route path={'/users/:id/edit'} element={<UserEdit/>} />
           <Route path={'/posts'} element={<Posts/>} />
+          <Route path={'/posts/create'} element={<PostCreate/>} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -7,6 +7,7 @@ import { Wrapper } from "../components/Wrapper";
 import axios from "axios";
 import { User } from "../models/User";
 import { Paginator } from "../components/Paginator";
+import { Link } from "react-router-dom";
 
 export const Users = () => {
 
@@ -71,9 +72,15 @@ export const Users = () => {
           </tbody>
         </table>
       </div>
-
-      <Paginator page={page} lastPage={lastPage} pageChanged={setPage}/>
+      
+      <div className="bottom-bar">
+        <Paginator page={page} lastPage={lastPage} pageChanged={setPage}/>
+        <ul className="bottom-nav-list">
+          <li className="bottom-nav-item">
+            <Link to="/users/create">add</Link>
+          </li>
+        </ul>
+      </div>
     </Wrapper>
-    
   )
 }

@@ -24,11 +24,6 @@ export const Paginator = (props: {page: number, lastPage: number, pageChanged: (
           <a href="#" onClick={next}>Next</a>
         </li>
       </ul>
-      <ul className="bottom-nav-list">
-        <li className="bottom-nav-item">
-          <Link to="/users/create">add</Link>
-        </li>
-      </ul>
     </nav>
   );
 }

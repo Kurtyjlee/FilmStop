@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Post } from "../../models/Post";
 import { Paginator } from "../../components/Paginator";
+import { Link } from "react-router-dom";
 
 export const Posts = () => {
   const [posts, setPosts] = useState([]);
@@ -71,8 +72,14 @@ export const Posts = () => {
       </div>
       
       {/* Pagination */}
-      <Paginator page={page} lastPage={lastPage} pageChanged={setPage}/>
-      
+      <div className="bottom-bar">
+        <Paginator page={page} lastPage={lastPage} pageChanged={setPage}/>
+        <ul className="bottom-nav-list">
+          <li className="bottom-nav-item">
+            <Link to="/posts/create">add</Link>
+          </li>
+        </ul>
+      </div>
     </Wrapper>
   )
 }
