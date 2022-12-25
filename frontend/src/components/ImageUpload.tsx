@@ -12,8 +12,6 @@ export const ImageUpload = (props: {uploaded: (url: string) => void}) => {
 
     const {data} = await axios.post("uploads/image", formData);
 
-    console.log(data);
-    console.log(data.url);
     props.uploaded(data.url);
 
   } 
