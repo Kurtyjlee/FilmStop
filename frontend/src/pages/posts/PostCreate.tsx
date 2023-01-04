@@ -22,7 +22,7 @@ export const PostCreate = () => {
       title: values.title,
       description: values.description,
       image: image,
-      likes: values.role_id  // Convert string to int
+      likes: values.likes
     })
 
     setRedirect(true);
@@ -49,7 +49,7 @@ export const PostCreate = () => {
             onChange={handleInputChange}
           />
 
-          <input 
+          <textarea
             className="form-input" 
             placeholder="Description"
             name="description"   

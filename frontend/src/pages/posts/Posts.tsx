@@ -1,5 +1,3 @@
-import "./Posts.scss";
-
 import React from "react";
 import { Wrapper } from "../../components/Wrapper";
 import { useState, useEffect } from "react";
@@ -10,6 +8,8 @@ import { Link } from "react-router-dom";
 
 export const Posts = () => {
   const [posts, setPosts] = useState([]);
+
+  // Pagination
   const [page, setPage] = useState(1);
   const [lastPage, setLastPage] = useState(0);
 
@@ -34,10 +34,10 @@ export const Posts = () => {
 
   return (
     <Wrapper>
-      <div className="post-table">
-        <table>
+      <div className="table-responsive">
+        <table className="table text-white table-sm">
           <thead>
-            <tr className="table-row">
+            <tr>
               <th>#</th>
               <th>Image</th>
               <th>Description</th>
@@ -49,22 +49,48 @@ export const Posts = () => {
           <tbody>
             {posts.map((p: Post) => {
               return (
-                <tr className = "table-row" key={p.id}>
-                  <td>{p.id}</td>
-                  <td><img src={p.image} width="50"/></td>
-                  <td>{p.title}</td>
-                  <td>{p.description}</td>
-                  <td>{p.likes}</td>
-                  <td>
-                    <div className="bottom-nav-item">
-                      <a href={`posts/${p.id}/edit`}
-                      >Edit</a>
-                      <a href="#"
-                        onClick={() => del(p.id)}
-                      >Delete</a>
-                    </div>
-                  </td>
-                </tr>
+                <>
+                  <tr key={p.id}>
+                    <td>{p.id}</td>
+                    <td><img src={p.image} width="50"/></td>
+                    <td>{p.title}</td>
+                    <td>{p.description}</td>
+                    <td>{p.likes}</td>
+                    {/* Actions */}
+                    <td>
+                      <div className="btn-group mr-2">
+                        <a 
+                          className="btn btn-sm btn-outline-secondary text-white"
+                          href={`posts/${p.id}/edit`}
+                        >Edit</a>
+                        <a 
+                          className="btn btn-sm btn-outline-secondary text-white"
+                          href="#"
+                          onClick={() => del(p.id)}
+                        >Delete</a>
+                      </div>
+                    </td>
+                  </tr>
+                  {/* comments */}
+                  <tr>
+                    <td colSpan={5}>
+                      <div>
+                        <table className="table table-sm text-white">
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>description</th>
+                              <th>likes</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <p>To be continued</p>
+                          </tbody>
+                        </table>
+                      </div>
+                    </td>
+                  </tr>
+                </>
               )
             })}
           </tbody>
@@ -76,7 +102,7 @@ export const Posts = () => {
         <Paginator page={page} lastPage={lastPage} pageChanged={setPage}/>
         <ul className="bottom-nav-list">
           <li className="bottom-nav-item">
-            <Link to="/posts/create">add</Link>
+            <Link className="btn btn-sm btn-outline-secondary" to="/posts/create">add</Link>
           </li>
         </ul>
       </div>

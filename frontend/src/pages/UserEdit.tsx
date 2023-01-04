@@ -32,7 +32,8 @@ export const UserEdit = () => {
         setLastName(data.last_name);
         setEmail(data.email);
         setRoleId(data.role_id);
-      })()
+      }
+    )()
   }, [userId]);
 
   const submit = async (e: SyntheticEvent) => {

@@ -1,6 +1,0 @@
-// type for todo attributes
-export type Todo = { 
-  title: string
-  description?: string
-  isCompleted: boolean
-}
