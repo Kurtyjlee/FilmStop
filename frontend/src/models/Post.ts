@@ -1,10 +1,13 @@
+import { Comments } from "./comments";
+
 export class Post {
   constructor(
-    public id = 0,
-    public title = "",
-    public image = "",
-    public description = "",
-    public likes = 0
+    public id: number,
+    public title: string,
+    public image: string,
+    public description: string,
+    public likes: number,
+    public comments: Comments[]
   ){
   }
 }

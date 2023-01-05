@@ -5,6 +5,7 @@ import axios from "axios";
 import { Post } from "../../models/Post";
 import { Paginator } from "../../components/Paginator";
 import { Link } from "react-router-dom";
+import { Comments } from "../../models/comments";
 
 export const Posts = () => {
   const [posts, setPosts] = useState([]);
@@ -47,33 +48,37 @@ export const Posts = () => {
             </tr>
           </thead>
           <tbody>
-            {posts.map((p: Post) => {
+            {posts.map((post: Post) => {
               return (
                 <>
-                  <tr key={p.id}>
-                    <td>{p.id}</td>
-                    <td><img src={p.image} width="50"/></td>
-                    <td>{p.title}</td>
-                    <td>{p.description}</td>
-                    <td>{p.likes}</td>
+                  <tr key={post.id}>
+                    <td>{post.id}</td>
+                    <td><img src={post.image} width="50"/></td>
+                    <td>{post.title}</td>
+                    <td>{post.description}</td>
+                    <td>{post.likes}</td>
                     {/* Actions */}
                     <td>
-                      <div className="btn-group mr-2">
+                      <div className="btn-group mr-3">
                         <a 
                           className="btn btn-sm btn-outline-secondary text-white"
-                          href={`posts/${p.id}/edit`}
+                          href={`posts/${post.id}/edit`}
                         >Edit</a>
                         <a 
                           className="btn btn-sm btn-outline-secondary text-white"
                           href="#"
-                          onClick={() => del(p.id)}
+                          onClick={() => del(post.id)}
                         >Delete</a>
+                        <a 
+                          className="btn btn-sm btn-outline-secondary text-white"
+                          href="#"
+                        >View</a>
                       </div>
                     </td>
                   </tr>
                   {/* comments */}
                   <tr>
-                    <td colSpan={5}>
+                    <td colSpan={10}>
                       <div>
                         <table className="table table-sm text-white">
                           <thead>
@@ -84,7 +89,15 @@ export const Posts = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            <p>To be continued</p>
+                          {post.comments.map((comment: Comments) => {
+                            return (
+                              <tr>
+                                <td>{comment.id}</td>
+                                <td>{comment.description}</td>
+                                <td>{comment.likes}</td>
+                              </tr>
+                            )
+                          })}
                           </tbody>
                         </table>
                       </div>

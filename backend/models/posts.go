@@ -8,7 +8,16 @@ type Post struct {
 	Description string    `json:"description"`
 	Image       string    `json:"image"`
 	Likes       int       `json:"likes"`
-	Comments    []Comment `json:"comments" gorm:"many2many:posts_comments"`
+	UpdatedAt   string    `json:"updated_at"`
+	CreatedAt   string    `json:"created_at"`
+	Comments    []Comment `json:"comments" gorm:"foreignKey:PostId"`
+}
+
+type Comment struct {
+	Id          uint   `json:"id"`
+	PostId      uint   `json:"post_id"`
+	Description string `json:"description"`
+	Likes       int    `json:"likes"`
 }
 
 // Required functions
