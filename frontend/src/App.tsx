@@ -10,6 +10,7 @@ import { UserEdit } from './pages/UserEdit';
 import { Posts } from './pages/posts/Posts';
 import { PostCreate } from './pages/posts/PostCreate';
 import { PostEdit } from './pages/posts/PostEdit';
+import { Profile } from './pages/Profile';
 
 // Main app
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path={'/'} element={<Home/>} />
+          <Route path={'/profile'} element={<Profile/>} />
           <Route path={'/register'} element={<Register/>} />
           <Route path={'/login'} element={<Login/>} />
           <Route path={'/users'} element={<Users/>} />

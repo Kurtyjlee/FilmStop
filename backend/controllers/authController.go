@@ -103,7 +103,7 @@ func User(c *fiber.Ctx) error {
 	// Returning the user
 	var user models.User
 
-	database.DB.Where("Id = ?", id).First(&user)
+	database.DB.Preload("Role").Where("Id = ?", id).First(&user)
 
 	return c.JSON(user)
 }
@@ -123,4 +123,61 @@ func Logout(c *fiber.Ctx) error {
 	})
 }
 
-// Might need to get the user profile
+func UpdateInfo(c *fiber.Ctx) error {
+	var data map[string]string
+
+	// Getting user data from the body
+	if err := c.BodyParser(&data); err != nil {
+		return err
+	}
+	cookie := c.Cookies("jwt")
+
+	id, _ := util.ParseJwt(cookie)
+	userId, _ := strconv.Atoi(id)
+
+	// Returning the user
+	user := models.User{
+		Id:        uint(userId),
+		FirstName: data["first_name"],
+		LastName:  data["last_name"],
+		Email:     data["email"],
+	}
+
+	database.DB.Model(&user).Updates(user)
+	database.DB.Preload("Role").Where("Id = ?", id).First(&user)
+
+	return c.JSON(user)
+}
+
+func UpdatePassword(c *fiber.Ctx) error {
+	var data map[string]string
+
+	// Getting user data from the body
+	if err := c.BodyParser(&data); err != nil {
+		return err
+	}
+
+	// Check if passwords match
+	if data["password"] != data["password_confirm"] {
+		c.Status(400)
+		return c.JSON(fiber.Map{
+			"message": "passwords do not match",
+		})
+	}
+
+	cookie := c.Cookies("jwt")
+
+	id, _ := util.ParseJwt(cookie)
+	userId, _ := strconv.Atoi(id)
+
+	user := models.User{
+		Id: uint(userId),
+	}
+
+	user.SetPassword(data["password"])
+
+	database.DB.Model(&user).Updates(user)
+	// database.DB.Preload("Role").Where("Id = ?", id).First(&user)
+
+	return c.JSON(user)
+}
