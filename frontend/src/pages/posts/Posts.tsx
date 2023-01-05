@@ -7,12 +7,26 @@ import { Paginator } from "../../components/Paginator";
 import { Link } from "react-router-dom";
 import { Comments } from "../../models/comments";
 
+// For animation
+const hide = {
+  maxHeight: 0,
+  transition: '200ms ease-in'
+}
+
+const show = {
+  maxHeight: '150px',
+  transition: '200ms ease-out'
+}
+
 export const Posts = () => {
   const [posts, setPosts] = useState([]);
 
   // Pagination
   const [page, setPage] = useState(1);
   const [lastPage, setLastPage] = useState(0);
+
+  // Animation
+  const [selected, setSelected] = useState(0);
 
   useEffect(() => {
     (
@@ -24,6 +38,10 @@ export const Posts = () => {
       }
     )()
   }, [page]);
+
+  const select = (id: number) => {
+    setSelected(selected === id ? 0 : id);
+  }
 
   const del = async (id:number) => {
     if (window.confirm("Are you sure you want to delete?")) {
@@ -72,6 +90,7 @@ export const Posts = () => {
                         <a 
                           className="btn btn-sm btn-outline-secondary text-white"
                           href="#"
+                          onClick={() => select(post.id)}
                         >View</a>
                       </div>
                     </td>
@@ -79,7 +98,7 @@ export const Posts = () => {
                   {/* comments */}
                   <tr>
                     <td colSpan={10}>
-                      <div>
+                      <div className="overflow-hidden" style={selected === post.id ? show : hide}>
                         <table className="table table-sm text-white">
                           <thead>
                             <tr>
