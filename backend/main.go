@@ -24,5 +24,5 @@ func main() {
 	// Setting up the route
 	routes.Setup(app)
 
-	log.Fatal(app.Listen(":8000"))
+	log.Fatal(app.Listen(":8080"))
 }
