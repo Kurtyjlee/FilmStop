@@ -7,13 +7,16 @@ import (
 )
 
 type User struct {
-	Id        uint   `json:"id"`
-	FirstName string `json:"first_name" gorm:"type:VARCHAR(30)"`
-	LastName  string `json:"last_name" gorm:"type:VARCHAR(30)"`
-	Email     string `json:"email" gorm:"unique"`
-	Password  []byte `json:"-"`
-	RoleId    uint   `json:"role_id"`
-	Role      Role   `json:"role" gorm:"foreignKey:RoleId"`
+	Id uint `json:"id"`
+	// Replace with username
+	FirstName string    `json:"first_name" gorm:"type:VARCHAR(30)"`
+	LastName  string    `json:"last_name" gorm:"type:VARCHAR(30)"`
+	Email     string    `json:"email" gorm:"unique"`
+	Password  []byte    `json:"-"`
+	RoleId    uint      `json:"role_id"`
+	Role      Role      `json:"role" gorm:"foreignKey:RoleId"`
+	Posts     []Post    `json:"posts" gorm:"foreignKey:UserId"`
+	Comments  []Comment `json:"comments" gorm:"foreignKey:UserId"`
 }
 
 // Method for User

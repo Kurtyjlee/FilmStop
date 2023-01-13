@@ -17,6 +17,14 @@ func Connect() {
 
 	// To export the database
 	DB = db
-
-	db.AutoMigrate(&models.User{}, &models.Role{}, &models.Permission{}, &models.Post{}, &models.Comment{})
+	db.AutoMigrate(
+		&models.Thread{},
+		&models.Post{},
+		&models.User{},
+		&models.Role{},
+		&models.Permission{},
+		&models.Comment{},
+		&models.CommentLikes{},
+		&models.PostLikes{},
+	)
 }

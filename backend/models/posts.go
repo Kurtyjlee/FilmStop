@@ -1,23 +1,29 @@
 package models
 
-import "gorm.io/gorm"
+import (
+	"gorm.io/gorm"
+)
 
 type Post struct {
-	Id          uint      `json:"id"`
-	Title       string    `json:"title"`
-	Description string    `json:"description"`
-	Image       string    `json:"image"`
-	Likes       int       `json:"likes"`
-	UpdatedAt   string    `json:"updated_at"`
-	CreatedAt   string    `json:"created_at"`
-	Comments    []Comment `json:"comments" gorm:"foreignKey:PostId"`
+	Id            uint        `json:"id"`
+	Title         string      `json:"title"`
+	Description   string      `json:"description"`
+	Image         string      `json:"image"`
+	TotalLikes    int         `json:"total_likes"`
+	TotalComments int         `json:"total_comments"`
+	UpdatedAt     string      `json:"updated_at"`
+	CreatedAt     string      `json:"created_at"`
+	UserId        uint        `json:"user_id"`                             //Users
+	ThreadId      uint        `json:"thread_id"`                           //Threads
+	Comments      []Comment   `json:"comments" gorm:"foreignKey:PostId"`   //Comments
+	Likes         []PostLikes `json:"post_likes" gorm:"foreignKey:PostId"` //Likes
 }
 
-type Comment struct {
-	Id          uint   `json:"id"`
-	PostId      uint   `json:"post_id"`
-	Description string `json:"description"`
-	Likes       int    `json:"likes"`
+type PostLikes struct {
+	Id     uint `json:"id"`
+	UserId uint `json:"user_id"`
+	User   User `json:"user" gorm:"foreignKey:UserId"`
+	PostId uint `json:"post_id"`
 }
 
 // Required functions
