@@ -2,7 +2,8 @@ export class Comments{
   constructor(
     public id: number,
     public description: string,
-    public likes: number
+    public total_likes: number,
+    // public likes: Likes[]
   ) {
   }
 }

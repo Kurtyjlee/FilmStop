@@ -54,14 +54,14 @@ export const Users = () => {
               return (
                 <tr key={user.id} className="table-row">
                   <td>{user.id}</td>
-                  <td>{user.first_name} {user.last_name}</td>
+                  <td>{user.user_name}</td>
                   <td>{user.email}</td>
                   <td>{user.role.name}</td>
                   <td>
                     <div className="bottom-nav-item">
                       <a href={`users/${user.id}/edit`}
                       >Edit</a>
-                      <a href="#"
+                      <a href="#!"
                         onClick={() => del(user.id)}
                       >Delete</a>
                     </div>

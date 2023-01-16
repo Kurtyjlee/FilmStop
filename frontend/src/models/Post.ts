@@ -6,7 +6,8 @@ export class Post {
     public title: string,
     public image: string,
     public description: string,
-    public likes: number,
+    public total_likes: number,
+    public total_comments: number,
     public comments: Comments[]
   ){
   }

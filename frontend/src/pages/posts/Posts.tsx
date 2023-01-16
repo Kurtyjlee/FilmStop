@@ -74,7 +74,7 @@ export const Posts = () => {
                     <td><img src={post.image} width="50"/></td>
                     <td>{post.title}</td>
                     <td>{post.description}</td>
-                    <td>{post.likes}</td>
+                    <td>{post.total_likes}</td>
                     {/* Actions */}
                     <td>
                       <div className="btn-group mr-3">
@@ -84,12 +84,12 @@ export const Posts = () => {
                         >Edit</a>
                         <a 
                           className="btn btn-sm btn-outline-secondary text-white"
-                          href="#"
+                          href="#!"
                           onClick={() => del(post.id)}
                         >Delete</a>
                         <a 
                           className="btn btn-sm btn-outline-secondary text-white"
-                          href="#"
+                          href="#!"
                           onClick={() => select(post.id)}
                         >View</a>
                       </div>
@@ -113,7 +113,7 @@ export const Posts = () => {
                               <tr>
                                 <td>{comment.id}</td>
                                 <td>{comment.description}</td>
-                                <td>{comment.likes}</td>
+                                <td>{comment.total_likes}</td>
                               </tr>
                             )
                           })}

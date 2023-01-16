@@ -14,7 +14,10 @@ export const PostCreate = () => {
     title: "",
     description: "",
     image: "",
-    likes: 0
+    total_likes: 0,
+    total_comments: 0,
+    user_id: 2,
+    thread_id: 1,
   };
 
   async function createPostCallback(values: any) {
@@ -22,7 +25,10 @@ export const PostCreate = () => {
       title: values.title,
       description: values.description,
       image: image,
-      likes: values.likes
+      total_likes: values.likes,
+      total_comments: values.comments,
+      user_id: values.user_id,
+      thread_id: values.thread_id
     })
 
     setRedirect(true);

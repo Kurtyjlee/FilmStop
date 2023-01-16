@@ -18,10 +18,11 @@ export const Header = () => {
         
         setUser(new User(
           data.id,
-          data.first_name,
-          data.last_name,
+          data.user_name,
           data.email,
-          data.role
+          data.role,
+          // data.posts,
+          // data.comments
         ));
       }
     )();
