@@ -28,10 +28,9 @@ func Register(c *fiber.Ctx) error {
 
 	// Registering the user
 	user := models.User{
-		FirstName: data["first_name"],
-		LastName:  data["last_name"],
-		Email:     data["email"],
-		RoleId:    1, //Admin
+		UserName: data["user_name"],
+		Email:    data["email"],
+		RoleId:   1, //Admin
 	}
 	user.SetPassword(data["password"])
 
@@ -69,6 +68,7 @@ func Login(c *fiber.Ctx) error {
 		})
 	}
 
+	// 24 hour cookie
 	timenow := time.Now().Add(time.Hour * 24)
 
 	// Generating jwt token
@@ -90,7 +90,6 @@ func Login(c *fiber.Ctx) error {
 	return c.JSON(fiber.Map{
 		"message": "success",
 	})
-
 }
 
 // Authenticated user; User retrieved using cookies
@@ -123,4 +122,4 @@ func Logout(c *fiber.Ctx) error {
 	})
 }
 
-// Might need to get the user profile
+// Need to get the user profile
