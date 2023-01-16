@@ -4,17 +4,17 @@ import (
 	"strconv"
 
 	"github.com/Kurtyjlee/photo-webapp/backend/database"
-	// "github.com/Kurtyjlee/photo-webapp/backend/middleware"
+	"github.com/Kurtyjlee/photo-webapp/backend/middleware"
 	"github.com/Kurtyjlee/photo-webapp/backend/models"
 	"github.com/gofiber/fiber/v2"
 )
 
 func AllUsers(c *fiber.Ctx) error {
 
-	// // permissions middleware
-	// if err := middleware.IsAuthorised(c, "users"); err != nil {
-	// 	return err
-	// }
+	// permissions middleware
+	if err := middleware.IsAuthorised(c, "users"); err != nil {
+		return err
+	}
 
 	// Paginated
 	page, _ := strconv.Atoi(c.Query("page", "1"))
@@ -23,10 +23,10 @@ func AllUsers(c *fiber.Ctx) error {
 }
 
 func CreateUser(c *fiber.Ctx) error {
-	// // permissions middleware
-	// if err := middleware.IsAuthorised(c, "users"); err != nil {
-	// 	return err
-	// }
+	// permissions middleware
+	if err := middleware.IsAuthorised(c, "users"); err != nil {
+		return err
+	}
 
 	var data map[string]string
 
@@ -50,10 +50,10 @@ func CreateUser(c *fiber.Ctx) error {
 }
 
 func GetUser(c *fiber.Ctx) error {
-	// // permissions middleware
-	// if err := middleware.IsAuthorised(c, "users"); err != nil {
-	// 	return err
-	// }
+	// permissions middleware
+	if err := middleware.IsAuthorised(c, "users"); err != nil {
+		return err
+	}
 
 	// Getting the id from the url
 	id, _ := strconv.Atoi(c.Params("id"))
@@ -68,10 +68,10 @@ func GetUser(c *fiber.Ctx) error {
 }
 
 func UpdateUser(c *fiber.Ctx) error {
-	// // permissions middleware
-	// if err := middleware.IsAuthorised(c, "users"); err != nil {
-	// 	return err
-	// }
+	// permissions middleware
+	if err := middleware.IsAuthorised(c, "users"); err != nil {
+		return err
+	}
 
 	id, _ := strconv.Atoi(c.Params("id"))
 
@@ -91,10 +91,10 @@ func UpdateUser(c *fiber.Ctx) error {
 }
 
 func DeleteUser(c *fiber.Ctx) error {
-	// // permissions middleware
-	// if err := middleware.IsAuthorised(c, "users"); err != nil {
-	// 	return err
-	// }
+	// permissions middleware
+	if err := middleware.IsAuthorised(c, "users"); err != nil {
+		return err
+	}
 
 	id, _ := strconv.Atoi(c.Params("id"))
 

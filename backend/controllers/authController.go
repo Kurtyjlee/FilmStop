@@ -30,7 +30,7 @@ func Register(c *fiber.Ctx) error {
 	user := models.User{
 		UserName: data["user_name"],
 		Email:    data["email"],
-		RoleId:   1, //Admin
+		RoleId:   4, //Admin
 	}
 	user.SetPassword(data["password"])
 
@@ -102,7 +102,7 @@ func User(c *fiber.Ctx) error {
 	// Returning the user
 	var user models.User
 
-	database.DB.Where("Id = ?", id).First(&user)
+	database.DB.Preload("Role").Where("Id = ?", id).First(&user)
 
 	return c.JSON(user)
 }
