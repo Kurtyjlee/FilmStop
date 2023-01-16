@@ -43,4 +43,10 @@ func Setup(app *fiber.App) {
 
 	app.Post("/api/uploads/image", controllers.UploadImage)
 	app.Static("/api/uploads/image", "./uploads") // Serve static files
+
+	app.Get("/api/comments", controllers.AllComments)
+	app.Post("/api/comments", controllers.CreateComment)
+	app.Get("/api/comments/:id", controllers.GetComment)
+	app.Put("/api/comments/:id", controllers.UpdateComment)
+	app.Delete("/api/comments/:id", controllers.DeleteComment)
 }
