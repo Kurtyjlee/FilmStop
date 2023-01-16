@@ -15,6 +15,9 @@ func Setup(app *fiber.App) {
 	app.Use(middleware.IsAuthenticated)
 
 	// Non-public routes
+	app.Put("/api/user/info", controllers.UpdateInfo)
+	app.Put("/api/user/password", controllers.UpdatePassword)
+
 	app.Get("/api/user", controllers.User)
 	app.Post("/api/logout", controllers.Logout)
 

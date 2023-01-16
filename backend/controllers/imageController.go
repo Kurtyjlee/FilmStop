@@ -24,6 +24,7 @@ func UploadImage(c *fiber.Ctx) error {
 	}
 	// return url of the file
 	return c.JSON(fiber.Map{
+		// Should change the url?
 		"url": "http://localhost:3000/api/uploads/image/" + filename,
 	})
 }

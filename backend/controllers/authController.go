@@ -30,7 +30,7 @@ func Register(c *fiber.Ctx) error {
 	user := models.User{
 		UserName: data["user_name"],
 		Email:    data["email"],
-		RoleId:   4, //Admin
+		RoleId:   5, //Admin
 	}
 	user.SetPassword(data["password"])
 
@@ -122,4 +122,72 @@ func Logout(c *fiber.Ctx) error {
 	})
 }
 
-// Need to get the user profile
+// user profile
+func UpdateInfo(c *fiber.Ctx) error {
+
+	var data map[string]string
+
+	// Getting user data from the body
+	if err := c.BodyParser(&data); err != nil {
+		return err
+	}
+
+	// cookies
+	cookie := c.Cookies("jwt")
+
+	id, _ := util.ParseJwt(cookie)
+
+	userId, _ := strconv.Atoi(id)
+
+	// Returning the user
+	user := models.User{
+		Id:       uint(userId),
+		UserName: data["user_name"],
+		Email:    data["email"],
+	}
+
+	database.DB.Model(&user).Updates(user)
+
+	database.DB.Preload("Role").Where("Id = ?", id).First(&user)
+
+	return c.JSON(user)
+}
+
+// user profile
+func UpdatePassword(c *fiber.Ctx) error {
+
+	var data map[string]string
+
+	// Getting user data from the body
+	if err := c.BodyParser(&data); err != nil {
+		return err
+	}
+
+	// cookies
+	cookie := c.Cookies("jwt")
+
+	id, _ := util.ParseJwt(cookie)
+
+	// Check if passwords match
+	if data["password"] != data["password_confirm"] {
+		c.Status(400)
+		return c.JSON(fiber.Map{
+			"message": "passwords do not match",
+		})
+	}
+
+	userId, _ := strconv.Atoi(id)
+
+	// Returning the user
+	user := models.User{
+		Id: uint(userId),
+	}
+
+	user.SetPassword(data["password"])
+
+	database.DB.Model(&user).Updates(user)
+
+	database.DB.Preload("Role").Where("Id = ?", id).First(&user)
+
+	return c.JSON(user)
+}

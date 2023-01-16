@@ -2,7 +2,6 @@ package middleware
 
 import (
 	"errors"
-	"fmt"
 	"strconv"
 
 	"github.com/Kurtyjlee/photo-webapp/backend/database"
@@ -36,8 +35,6 @@ func IsAuthorised(c *fiber.Ctx, page string) error {
 
 	// Getting role
 	database.DB.Preload("Permissions").Find(&role)
-
-	fmt.Print(role.Permissions)
 
 	if c.Method() == "GET" {
 		for _, permission := range role.Permissions {
