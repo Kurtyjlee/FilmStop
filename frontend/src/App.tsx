@@ -10,6 +10,7 @@ import { UserEdit } from './pages/UserEdit';
 import { Posts } from './pages/posts/Posts';
 import { PostCreate } from './pages/posts/PostCreate';
 import { PostEdit } from './pages/posts/PostEdit';
+import Profile from './pages/Profile';
 
 // Main app
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path={'/'} element={<Home/>} />
           <Route path={'/register'} element={<Register/>} />
           <Route path={'/login'} element={<Login/>} />
+          <Route path={'/profile'} element={<Profile/>} />
           <Route path={'/users'} element={<Users/>} />
           <Route path={'/users/create'} element={<UserCreate/>} />
           <Route path={'/users/:id/edit'} element={<UserEdit/>} />
