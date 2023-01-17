@@ -18,6 +18,7 @@ export const UserEdit = () => {
   // user id
   let id: any = useParams();
   let userId:any = parseInt(id.id);
+  console.log(userId);
 
   // Getting the roles
   useEffect(() => {

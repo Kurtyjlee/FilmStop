@@ -11,6 +11,7 @@ import { Posts } from './pages/posts/Posts';
 import { PostCreate } from './pages/posts/PostCreate';
 import { PostEdit } from './pages/posts/PostEdit';
 import Profile from './pages/Profile';
+import { CommentCreate } from './pages/comments/CommentCreate';
 
 // Main app
 function App() {
@@ -22,12 +23,19 @@ function App() {
           <Route path={'/register'} element={<Register/>} />
           <Route path={'/login'} element={<Login/>} />
           <Route path={'/profile'} element={<Profile/>} />
+
+          {/* users */}
           <Route path={'/users'} element={<Users/>} />
           <Route path={'/users/create'} element={<UserCreate/>} />
           <Route path={'/users/:id/edit'} element={<UserEdit/>} />
+          
+          {/* Create posts */}
           <Route path={'/posts'} element={<Posts/>} />
           <Route path={'/posts/create'} element={<PostCreate/>} />
           <Route path={'/posts/:id/edit'} element={<PostEdit/>} />
+
+          {/* Create comments */}
+          <Route path={'/posts/:id/comment_create'} element={<CommentCreate/>} />
         </Routes>
       </BrowserRouter>
     </div>

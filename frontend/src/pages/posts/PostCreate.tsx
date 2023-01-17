@@ -45,6 +45,7 @@ export const PostCreate = () => {
 
   return (
     <Wrapper>
+      <h3>create post</h3>
       <main className="form-register">
         <form onSubmit={handleSubmit}>
           <input 

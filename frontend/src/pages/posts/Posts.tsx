@@ -78,10 +78,10 @@ export const Posts = () => {
                     {/* Actions */}
                     <td>
                       <div className="btn-group mr-3">
-                        <a 
+                        <Link 
                           className="btn btn-sm btn-outline-secondary text-white"
-                          href={`posts/${post.id}/edit`}
-                        >Edit</a>
+                          to={`posts/${post.id}/edit`}
+                        >Edit</Link>
                         <a 
                           className="btn btn-sm btn-outline-secondary text-white"
                           href="#!"
@@ -92,6 +92,10 @@ export const Posts = () => {
                           href="#!"
                           onClick={() => select(post.id)}
                         >View</a>
+                        <Link 
+                        className="btn btn-sm btn-outline-secondary text-white"
+                          to={`/posts/${post.id}/comment_create`}
+                        >Comment</Link>
                       </div>
                     </td>
                   </tr>
