@@ -39,6 +39,9 @@ export const Header = () => {
 
       <ul className="nav-list">  
         <li className="nav-item">
+          <Link to="/threads">Threads</Link>
+        </li> 
+        <li className="nav-item">
           <Link to="/posts">Posts</Link>
         </li> 
         <li className="nav-item">

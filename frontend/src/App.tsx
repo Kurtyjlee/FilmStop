@@ -12,6 +12,7 @@ import { PostCreate } from './pages/posts/PostCreate';
 import { PostEdit } from './pages/posts/PostEdit';
 import Profile from './pages/Profile';
 import { CommentCreate } from './pages/comments/CommentCreate';
+import { Threads } from './pages/threads/Threads';
 
 // Main app
 function App() {
@@ -36,6 +37,9 @@ function App() {
 
           {/* Create comments */}
           <Route path={'/posts/:id/comment_create'} element={<CommentCreate/>} />
+
+          {/* threads */}
+          <Route path={'/threads'} element={<Threads/>} />
         </Routes>
       </BrowserRouter>
     </div>
