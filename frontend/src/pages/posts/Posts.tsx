@@ -89,7 +89,7 @@ export const Posts = () => {
                       <div className="btn-group mr-3">
                         <Link 
                           className="btn btn-sm btn-outline-secondary text-white"
-                          to={`posts/${post.id}/edit`}
+                          to={`/posts/${post.id}/edit`}
                         >Edit</Link>
                         <a 
                           className="btn btn-sm btn-outline-secondary text-white"

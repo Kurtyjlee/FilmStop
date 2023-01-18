@@ -5,6 +5,8 @@ import { ImageUpload } from "../../components/ImageUpload";
 import { Wrapper } from "../../components/Wrapper";
 import { useForm } from "../../customHooks/useForm";
 
+// make it either get threadId from url or user manually input thread
+
 export const PostCreate = () => {
   const [redirect, setRedirect] = useState(false);
   const [image, setImage] = useState("");
