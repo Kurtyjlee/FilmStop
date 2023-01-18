@@ -49,4 +49,10 @@ func Setup(app *fiber.App) {
 	app.Get("/api/comments/:id", controllers.GetComment)
 	app.Put("/api/comments/:id", controllers.UpdateComment)
 	app.Delete("/api/comments/:id", controllers.DeleteComment)
+
+	app.Get("/api/threads", controllers.AllThreads)
+	app.Post("/api/threads", controllers.CreateThread)
+	app.Get("/api/threads/:id", controllers.GetThread)
+	app.Put("/api/threads/:id", controllers.UpdateThread)
+	app.Delete("/api/threads/:id", controllers.DeleteThread)
 }

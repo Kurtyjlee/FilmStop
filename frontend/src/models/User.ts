@@ -8,9 +8,7 @@ export class User {
     public id = 0,
     public user_name = "",
     public email = "",
-    public role = new Role(),
-    // public posts: Post[],
-    // public comment: Comments[]
+    public role = new Role()
   ) {
   }
 

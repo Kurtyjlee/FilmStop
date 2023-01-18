@@ -40,6 +40,7 @@ function App() {
 
           {/* threads */}
           <Route path={'/threads'} element={<Threads/>} />
+          <Route path={'/threads/:id/'} element={<Posts/>} />
         </Routes>
       </BrowserRouter>
     </div>
