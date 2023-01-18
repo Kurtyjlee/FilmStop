@@ -6,26 +6,12 @@ import { Paginator } from "../../components/Paginator";
 import { Link } from "react-router-dom";
 import { Thread } from "../../models/Thread";
 
-// For animation
-const hide = {
-  maxHeight: 0,
-  transition: '200ms ease-in'
-}
-
-const show = {
-  maxHeight: '150px',
-  transition: '200ms ease-out'
-}
-
 export const Threads = () => {
   const [threads, setThreads] = useState([]);
 
   // Pagination
   const [page, setPage] = useState(1);
   const [lastPage, setLastPage] = useState(0);
-
-  // Animation
-  const [selected, setSelected] = useState(0);
 
   useEffect(() => {
     (
@@ -38,10 +24,6 @@ export const Threads = () => {
     )()
   }, [page]);
 
-  const select = (id: number) => {
-    setSelected(selected === id ? 0 : id);
-  }
-
   return (
     <Wrapper>
       <div className="table-responsive">
@@ -50,7 +32,6 @@ export const Threads = () => {
             <tr>
               <th>#</th>
               <th>Name</th>
-              <th>Link</th>
             </tr>
           </thead>
           <tbody>
@@ -58,10 +39,9 @@ export const Threads = () => {
               return (
                 <tr key={thread.id}>
                     <td>{thread.id}</td>
-                    <td>{thread.name}</td>
                     <td>
                         <Link 
-                            className="btn btn-sm btn-outline-secondary text-white"
+                            className="btn btn-sm text-white"
                             to={`/threads/${thread.id}`}
                         >{thread.name}</Link>
                     </td>
