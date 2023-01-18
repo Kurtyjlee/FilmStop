@@ -34,13 +34,14 @@ function App() {
           <Route path={'/posts'} element={<Posts/>} />
           <Route path={'/posts/create'} element={<PostCreate/>} />
           <Route path={'/posts/:id/edit'} element={<PostEdit/>} />
+          <Route path={'/posts/threads/:id/'} element={<Posts/>} />
 
           {/* Create comments */}
           <Route path={'/posts/:id/comment_create'} element={<CommentCreate/>} />
 
           {/* threads */}
           <Route path={'/threads'} element={<Threads/>} />
-          <Route path={'/threads/:id/'} element={<Posts/>} />
+          
         </Routes>
       </BrowserRouter>
     </div>

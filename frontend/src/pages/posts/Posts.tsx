@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Post } from "../../models/Post";
 import { Paginator } from "../../components/Paginator";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Comments } from "../../models/comments";
 
 // For animation
@@ -28,10 +28,19 @@ export const Posts = () => {
   // Animation
   const [selected, setSelected] = useState(0);
 
+  // user id
+  let id: any = useParams();
+  let threadId:any = parseInt(id.id);
+
   useEffect(() => {
     (
       async () => {
-        const {data} = await axios.get(`posts?page=${page}`)
+
+        const {data} = threadId == null 
+          // When there is no threadId, show all pages
+          ? await axios.get(`posts?page=${page}`) 
+          // When there is threadId, only show pages associated with the threadId
+          : await axios.get(`posts?page=${page}`)
 
         setPosts(data.data);
         setLastPage(data.meta.last_page);

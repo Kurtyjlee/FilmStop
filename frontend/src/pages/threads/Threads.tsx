@@ -42,7 +42,7 @@ export const Threads = () => {
                     <td>
                         <Link 
                             className="btn btn-sm text-white"
-                            to={`/threads/${thread.id}`}
+                            to={`/posts/threads/${thread.id}`}
                         >{thread.name}</Link>
                     </td>
                 </tr>
