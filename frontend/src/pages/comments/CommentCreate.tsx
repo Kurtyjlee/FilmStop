@@ -35,7 +35,7 @@ export const CommentCreate = () => {
       description: values.description,
       total_likes: values.likes,
       post_id: values.post_id,
-      user_id: values.user_id
+      user_id: userId
     })
 
     setRedirect(true);
