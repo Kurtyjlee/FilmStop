@@ -10,9 +10,6 @@ import (
 )
 
 func AllPosts(c *fiber.Ctx) error {
-	if err := middleware.IsAuthorised(c, "posts"); err != nil {
-		return err
-	}
 
 	// Paginated
 	page, _ := strconv.Atoi(c.Query("page", "1"))
@@ -83,4 +80,14 @@ func DeletePost(c *fiber.Ctx) error {
 	database.DB.Delete(&post)
 
 	return nil
+}
+
+func FilterPost(c *fiber.Ctx) error {
+	post := models.Post{}
+
+	id, _ := strconv.Atoi(c.Params("id"))
+
+	database.DB.Preload("Comments").Where("thread_id = ?", id).Find(&post)
+
+	return c.JSON(post)
 }
