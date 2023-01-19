@@ -1,8 +1,8 @@
 import React, { SyntheticEvent, useEffect } from "react";
-import { Wrapper } from "../components/Wrapper";
+import { Wrapper } from "../../components/Wrapper";
 import { useState } from "react";
 import axios from "axios";
-import { Role } from "../models/Role";
+import { Role } from "../../models/Role";
 import { Navigate, useParams } from "react-router-dom";
 
 export const UserEdit = () => {

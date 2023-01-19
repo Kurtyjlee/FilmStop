@@ -3,10 +3,10 @@ import "./Users.scss";
 
 // Dependencies
 import React, { useEffect, useState } from "react";
-import { Wrapper } from "../components/Wrapper";
+import { Wrapper } from "../../components/Wrapper";
 import axios from "axios";
-import { User } from "../models/User";
-import { Paginator } from "../components/Paginator";
+import { User } from "../../models/User";
+import { Paginator } from "../../components/Paginator";
 import { Link } from "react-router-dom";
 
 export const Users = () => {
