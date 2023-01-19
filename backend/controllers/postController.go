@@ -14,7 +14,7 @@ func AllPosts(c *fiber.Ctx) error {
 	// Paginated
 	page, _ := strconv.Atoi(c.Query("page", "1"))
 
-	return c.JSON(models.Paginate(database.DB, &models.Post{}, page))
+	return c.JSON(models.Paginate(database.DB, &models.Post{}, page, 0))
 }
 
 func CreatePost(c *fiber.Ctx) error {
@@ -83,11 +83,12 @@ func DeletePost(c *fiber.Ctx) error {
 }
 
 func FilterPost(c *fiber.Ctx) error {
-	post := models.Post{}
+
+	// Paginated
+	page, _ := strconv.Atoi(c.Query("page", "1"))
 
 	id, _ := strconv.Atoi(c.Params("id"))
 
-	database.DB.Preload("Comments").Where("thread_id = ?", id).Find(&post)
+	return c.JSON(models.Paginate(database.DB, &models.Post{}, page, id))
 
-	return c.JSON(post)
 }

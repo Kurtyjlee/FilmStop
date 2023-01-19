@@ -14,7 +14,7 @@ func AllThreads(c *fiber.Ctx) error {
 	// Paginated
 	page, _ := strconv.Atoi(c.Query("page", "1"))
 
-	return c.JSON(models.Paginate(database.DB, &models.Thread{}, page))
+	return c.JSON(models.Paginate(database.DB, &models.Thread{}, page, 0))
 }
 
 func CreateThread(c *fiber.Ctx) error {

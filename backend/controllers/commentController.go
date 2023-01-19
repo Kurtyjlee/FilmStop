@@ -17,7 +17,7 @@ func AllComments(c *fiber.Ctx) error {
 	// Paginated
 	page, _ := strconv.Atoi(c.Query("page", "1"))
 
-	return c.JSON(models.Paginate(database.DB, &models.Comment{}, page))
+	return c.JSON(models.Paginate(database.DB, &models.Comment{}, page, 0))
 }
 
 func CreateComment(c *fiber.Ctx) error {

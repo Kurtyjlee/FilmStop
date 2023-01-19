@@ -8,6 +8,7 @@ export class Post {
     public description: string,
     public total_likes: number,
     public total_comments: number,
+    public thread_id: number,
     public comments: Comments[]
   ){
   }

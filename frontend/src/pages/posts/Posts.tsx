@@ -35,18 +35,17 @@ export const Posts = () => {
   useEffect(() => {
     (
       async () => {
-
-        const {data} = threadId == null 
+        const {data} = isNaN(threadId)
           // When there is no threadId, show all pages
           ? await axios.get(`posts?page=${page}`) 
           // When there is threadId, only show pages associated with the threadId
-          : await axios.get(`posts?page=${page}`)
+          : await axios.get(`posts/threads/${threadId}?page=${page}`)
 
         setPosts(data.data);
         setLastPage(data.meta.last_page);
       }
     )()
-  }, [page]);
+  }, [page, threadId]);
 
   const select = (id: number) => {
     setSelected(selected === id ? 0 : id);
@@ -71,6 +70,7 @@ export const Posts = () => {
               <th>Description</th>
               <th>Title</th>
               <th>Likes</th>
+              <th>thread_id</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -84,6 +84,7 @@ export const Posts = () => {
                     <td>{post.title}</td>
                     <td>{post.description}</td>
                     <td>{post.total_likes}</td>
+                    <td>{post.thread_id}</td>
                     {/* Actions */}
                     <td>
                       <div className="btn-group mr-3">

@@ -27,7 +27,7 @@ func (comment *Comment) Count(db *gorm.DB) int64 {
 	return total
 }
 
-func (comment *Comment) Take(db *gorm.DB, limit int, offset int) interface{} {
+func (comment *Comment) Take(db *gorm.DB, limit int, offset int, filterType int) interface{} {
 	var comments []Comment
 
 	db.Offset(offset).Limit(limit).Find(&comments)

@@ -15,10 +15,10 @@ func (thread *Thread) Count(db *gorm.DB) int64 {
 	return total
 }
 
-func (thread *Thread) Take(db *gorm.DB, limit int, offset int) interface{} {
+func (thread *Thread) Take(db *gorm.DB, limit int, offset int, filterType int) interface{} {
 	var threads []Thread
 
-	db.Preload("Comments").Offset(offset).Limit(limit).Find(&threads)
+	db.Offset(offset).Limit(limit).Find(&threads)
 
 	return threads
 }

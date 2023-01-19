@@ -34,10 +34,15 @@ func (post *Post) Count(db *gorm.DB) int64 {
 	return total
 }
 
-func (post *Post) Take(db *gorm.DB, limit int, offset int) interface{} {
+func (post *Post) Take(db *gorm.DB, limit int, offset int, filterType int) interface{} {
 	var posts []Post
 
-	db.Preload("Comments").Offset(offset).Limit(limit).Find(&posts)
+	// Different filters for posts
+	if (filterType == 0) {
+		db.Preload("Comments").Offset(offset).Limit(limit).Find(&posts)
+	} else {
+		db.Preload("Comments").Offset(offset).Limit(limit).Where("thread_id = ?", filterType).Find(&posts)
+	}
 
 	return posts
 }

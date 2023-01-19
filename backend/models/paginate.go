@@ -8,12 +8,12 @@ import (
 )
 
 // Allows data to be paginated for better readability
-func Paginate(db *gorm.DB, entity Entity, page int) fiber.Map {
+func Paginate(db *gorm.DB, entity Entity, page int, filterType int) fiber.Map {
 	limit := 5
 	offset := (page - 1) * limit // Allow the offset to start from 0
 
 	// Getting data from the entity
-	data := entity.Take(db, limit, offset)
+	data := entity.Take(db, limit, offset, filterType)
 	// Getting the total number of posts
 	total := entity.Count(db)
 
