@@ -7,8 +7,7 @@ import { Navigate, useParams } from "react-router-dom";
 
 export const UserEdit = () => {
 
-  const [first_name, setFirstName] = useState("");
-  const [last_name, setLastName] = useState("");
+  const [user_name, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [role_id, setRoleId] = useState("");
 
@@ -18,7 +17,6 @@ export const UserEdit = () => {
   // user id
   let id: any = useParams();
   let userId:any = parseInt(id.id);
-  console.log(userId);
 
   // Getting the roles
   useEffect(() => {
@@ -29,8 +27,7 @@ export const UserEdit = () => {
 
         const {data} = await axios.get(`users/${userId}`);
 
-        setFirstName(data.first_name);
-        setLastName(data.last_name);
+        setUsername(data.user_name);
         setEmail(data.email);
         setRoleId(data.role_id);
       }
@@ -43,8 +40,7 @@ export const UserEdit = () => {
     let userRoleId = parseInt(role_id);
 
     await axios.put(`users/${userId}`, {
-      "first_name": first_name,
-      "last_name": last_name,
+      "user_name": user_name,
       "email": email,
       "role_id": userRoleId
     })
@@ -62,19 +58,11 @@ export const UserEdit = () => {
         <form onSubmit={submit}>
           <input 
             className="form-input" 
-            defaultValue={first_name}
+            defaultValue={user_name}
             placeholder="First Name"
             name="first_name"  
             required 
-            onChange={e => setFirstName(e.target.value)}
-          />
-
-          <input 
-            className="form-input" 
-            defaultValue={last_name}
-            name="last_name"   
-            required 
-            onChange={e => setLastName(e.target.value)}
+            onChange={e => setUsername(e.target.value)}
           />
 
           <input 

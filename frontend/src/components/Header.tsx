@@ -21,8 +21,6 @@ export const Header = () => {
           data.user_name,
           data.email,
           data.role,
-          // data.posts,
-          // data.comments
         ));
       }
     )();
@@ -48,7 +46,7 @@ export const Header = () => {
           <Link to="/users">Users</Link>
         </li> 
         <li className="nav-item">
-          <Link to="/profile">{user.name}</Link>
+          <Link to="/profile">{user.user_name}</Link>
         </li> 
         <li className="nav-item">
           <Link to="/login" onClick={logout}>Sign out</Link>

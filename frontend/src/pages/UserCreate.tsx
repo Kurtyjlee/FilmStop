@@ -13,9 +13,9 @@ export const UserCreate = () => {
 
   // All fields blank
   const initialState = {
-    first_name: "",
-    last_name: "",
+    user_name: "",
     email: "",
+    password: "",
     role_id: 1  // first field is admin
   };
 
@@ -31,10 +31,10 @@ export const UserCreate = () => {
 
   async function createUserCallback(values: any) {
     await axios.post("users", {
-      first_name: values.first_name,
-      last_name: values.last_name,
+      user_name: values.user_name,
       email: values.email,
-      role_id: +values.role_id  // Convert string to int
+      password: values.password,
+      role_id: values.role_id  // Convert string to int
     })
 
     setRedirect(true);
@@ -55,16 +55,8 @@ export const UserCreate = () => {
         <form onSubmit={handleSubmit}>
           <input 
             className="form-input" 
-            placeholder="First Name"
-            name="first_name"  
-            required 
-            onChange={handleInputChange}
-          />
-
-          <input 
-            className="form-input" 
-            placeholder="Last Name"
-            name="last_name"   
+            placeholder="Username"
+            name="user_name"  
             required 
             onChange={handleInputChange}
           />
@@ -73,6 +65,15 @@ export const UserCreate = () => {
             className="form-input" 
             placeholder="Email" 
             name="email"  
+            required 
+            onChange={handleInputChange}
+          />
+
+          <input 
+            className="form-input" 
+            placeholder="Password" 
+            name="password"  
+            type="password"
             required 
             onChange={handleInputChange}
           />

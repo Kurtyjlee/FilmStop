@@ -1,5 +1,3 @@
-import { Comments } from "./comments";
-import { Post } from "./Post";
 import { Role } from "./Role";
 
 // Default user values
@@ -10,9 +8,5 @@ export class User {
     public email = "",
     public role = new Role()
   ) {
-  }
-
-  get name() {
-    return this.user_name;
   }
 }
