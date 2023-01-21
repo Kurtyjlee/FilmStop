@@ -1,43 +1,47 @@
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  background-color: #222222;
-  vertical-align: middle;
-}
-
-.nav-brand{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1.5rem;
-  text-decoration: none;
-  color: #FFFFFF;
-  font-weight: 600;
-}
-
-.nav-list {
-  list-style-type: none;
-  margin: 0;
+  height: var(--nav-size);
+  background-color: var(--bg);
   padding: 0 1rem;
-  overflow: hidden;
-  background-color: #222222;
+  border-bottom: var(--border);
+}
+
+.navbar-nav {
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+
+  li {
+    color:white;
+  }
 }
 
 .nav-item {
-  float: left;
+  width: calc(var(--nav-size) * 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.nav-item a {
-  display: block;
-  color: #FFFFFF;
-  text-align: center;
-  padding: 1.5rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-}
+.icon-button {
+  --button-size: calc(var(--nav-size) * 0.5);
+  background-color: var(--bg-accent);
+  width: var(--button-size);
+  height: var(--button-size);
+  border-radius: 50%;
+  padding: 5px;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-/* Change the link color to #111 (black) on hover */
-.nav-item a:hover {
-  text-decoration: underline;
+  &:hover {
+    filter: brightness(1.2);
+  }
+
+  svg {
+    fill: var(--text-color);
+    width: 20px;
+    height: 20px;
+  }
 }

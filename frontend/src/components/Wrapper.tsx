@@ -1,8 +1,18 @@
+// svg
+import { ReactComponent as BellIcon } from './../icons/bell.svg'
+import { ReactComponent as ArrowIcon } from './../icons/arrow.svg'
+import { ReactComponent as BoltIcon } from './../icons/bolt.svg'
+import { ReactComponent as CaretIcon } from './../icons/caret.svg'
+import { ReactComponent as MessengerIcon } from './../icons/messenger.svg'
+import { ReactComponent as PlusIcon } from './../icons/plus.svg'
+
 import React from "react";
 import { Header } from "./Header";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
+import { HeaderItem } from "./HeaderItem";
+import { DropdownMenu } from "./DropdownMenu";
 
 export const Wrapper = (props: any) => {
 
@@ -29,10 +39,19 @@ export const Wrapper = (props: any) => {
   // Main header
   return (
     <>
-      <div>
-        <Header/>
-      </div>
-      {props.children}
+      <Header>
+       <HeaderItem icon={<PlusIcon/>} url="#!" />
+       <HeaderItem icon={<BellIcon/>} url="#!" />
+       <HeaderItem icon={<MessengerIcon/>} url="#!" />
+       <HeaderItem icon={<CaretIcon/>} url="#!">
+        <DropdownMenu />
+       </HeaderItem>
+      </Header>
     </>
+    
   )
 }
+
+// {props.children}
+
+
