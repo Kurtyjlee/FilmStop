@@ -36,5 +36,4 @@ export const DropdownMenu = () => {
       </DropdownItem>
     </div>
   )
-  
 }

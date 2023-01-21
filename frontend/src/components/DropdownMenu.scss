@@ -34,18 +34,18 @@
 }
 
 .menu-item {
-height: 50px;
-display: flex;
-align-items: center;
-border-radius: var(--border-radius);
-transition: background var(--speed);
-padding: 0.5rem;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius);
+  transition: background var(--speed);
+  padding: 0.5rem;
 
-&:hover {
-    background-color: #525357;
-}
+  &:hover {
+      background-color: #525357;
+  }
 }
 
 .icon-right {
-margin-left: auto;
+  margin-left: auto;
 }

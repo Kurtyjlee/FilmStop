@@ -13,10 +13,9 @@ export const HeaderItem: FunctionComponent<Props> = ({icon, title, url, children
 
   return (
     <li className="nav-item">
-      <a href={url} className="icon-button" onClick={() => setOpen(!open)}>
+      <a href={url} className="icon-button" onFocus={() => setOpen(true)} onBlur={() => setOpen(false)}>
           {icon}
       </a>
-
       {open && children}
     </li>
   );
