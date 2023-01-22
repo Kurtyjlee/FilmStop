@@ -1,0 +1,9 @@
+.search-bar {
+    padding: 0rem 1rem;
+    margin: 0.5rem;
+    background-color: var(--bg);
+    color: var(--text-color);
+    border: var(--border);
+    border-radius: 20px;
+    height: calc(var(--nav-size) - 1rem);
+}

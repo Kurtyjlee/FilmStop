@@ -13,6 +13,9 @@ import axios from "axios";
 import { Navigate } from "react-router-dom";
 import { HeaderItem } from "./HeaderItem";
 import { DropdownMenu } from "./DropdownMenu";
+import { HeaderBrand } from './HeaderBrand'
+import { SearchBar } from './SearchBar'
+import { IconContainer } from './IconContainer'
 
 export const Wrapper = (props: any) => {
 
@@ -40,18 +43,18 @@ export const Wrapper = (props: any) => {
   return (
     <>
       <Header>
-       <HeaderItem icon={<PlusIcon/>} url="#!" />
-       <HeaderItem icon={<BellIcon/>} url="#!" />
-       <HeaderItem icon={<MessengerIcon/>} url="#!" />
-       <HeaderItem icon={<CaretIcon/>} url="#!">
-        <DropdownMenu />
-       </HeaderItem>
+        <HeaderBrand title="FilmStop" url="/"/>
+        <SearchBar />
+        <IconContainer>
+          <HeaderItem icon={<PlusIcon/>} url="#!" />
+          <HeaderItem icon={<BellIcon/>} url="#!" />
+          <HeaderItem icon={<MessengerIcon/>} url="#!" />
+          <HeaderItem icon={<CaretIcon/>} url="#!">
+            <DropdownMenu />
+          </HeaderItem>
+        </IconContainer>
       </Header>
+      {/* {props.children} */}
     </>
-    
   )
 }
-
-// {props.children}
-
-
