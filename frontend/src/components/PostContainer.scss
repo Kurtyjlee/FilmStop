@@ -1,0 +1,48 @@
+@mixin flex-column-post {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main-post-container {
+    @include flex-column-post;
+    margin: 1rem 10rem;
+}
+
+.inner-post-container {
+    @include flex-column-post;
+    margin-bottom: 1rem;
+    border: var(--border);
+    border-radius: 10px;
+    background-color: var(--bg);
+    width: 100%;
+}
+
+.title-container {
+    width: 90%;
+    margin: 1rem;
+
+    h3 {
+        color: var(--text-color);
+    }
+}
+
+.image-container {
+    @include flex-column-post;
+    width: 90%;
+    margin-bottom: 1rem;
+
+    img {
+        width: 100%;
+    }
+}
+
+.desc-container {
+    width: 90%;
+    margin-bottom: 1rem;
+
+    p {
+        color: var(--text-color);
+    }
+}

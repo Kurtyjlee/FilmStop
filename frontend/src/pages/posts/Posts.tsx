@@ -1,3 +1,5 @@
+import "./../../components/PostContainer.scss";
+
 import React from "react";
 import { Wrapper } from "../../components/Wrapper";
 import { useState, useEffect } from "react";
@@ -6,6 +8,7 @@ import { Post } from "../../models/Post";
 import { Paginator } from "../../components/Paginator";
 import { Link, useParams } from "react-router-dom";
 import { Comments } from "../../models/comments";
+import { PostContainer } from "../../components/PostContainer";
 
 // For animation
 const hide = {
@@ -61,87 +64,15 @@ export const Posts = () => {
 
   return (
     <Wrapper>
-      <div className="table-responsive">
-        <table className="table text-white table-sm">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Image</th>
-              <th>Description</th>
-              <th>Title</th>
-              <th>Likes</th>
-              <th>thread_id</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {posts.map((post: Post) => {
-              return (
-                <>
-                  <tr key={post.id}>
-                    <td>{post.id}</td>
-                    <td><img src={post.image} width="50"/></td>
-                    <td>{post.title}</td>
-                    <td>{post.description}</td>
-                    <td>{post.total_likes}</td>
-                    <td>{post.thread_id}</td>
-                    {/* Actions */}
-                    <td>
-                      <div className="btn-group mr-3">
-                        <Link 
-                          className="btn btn-sm btn-outline-secondary text-white"
-                          to={`/posts/${post.id}/edit`}
-                        >Edit</Link>
-                        <a 
-                          className="btn btn-sm btn-outline-secondary text-white"
-                          href="#!"
-                          onClick={() => del(post.id)}
-                        >Delete</a>
-                        <a 
-                          className="btn btn-sm btn-outline-secondary text-white"
-                          href="#!"
-                          onClick={() => select(post.id)}
-                        >View</a>
-                        <Link 
-                        className="btn btn-sm btn-outline-secondary text-white"
-                          to={`/posts/${post.id}/comment_create`}
-                        >Comment</Link>
-                      </div>
-                    </td>
-                  </tr>
-                  {/* comments */}
-                  <tr>
-                    <td colSpan={10}>
-                      <div className="overflow-hidden" style={selected === post.id ? show : hide}>
-                        <table className="table table-sm text-white">
-                          <thead>
-                            <tr>
-                              <th>#</th>
-                              <th>description</th>
-                              <th>likes</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                          {post.comments.map((comment: Comments) => {
-                            return (
-                              <tr>
-                                <td>{comment.id}</td>
-                                <td>{comment.description}</td>
-                                <td>{comment.total_likes}</td>
-                              </tr>
-                            )
-                          })}
-                          </tbody>
-                        </table>
-                      </div>
-                    </td>
-                  </tr>
-                </>
-              )
-            })}
-          </tbody>
-        </table>
+      
+      <div className="main-post-container"> 
+        {posts.map((post: Post) => {
+         return (
+          <PostContainer post={post}/>
+         )
+        })}
       </div>
+      
       
       {/* Pagination */}
       <div className="bottom-bar">
@@ -156,3 +87,84 @@ export const Posts = () => {
   )
 }
 
+// {/* <div className="table-responsive">
+//         <table className="table text-white table-sm">
+//           <thead>
+//             <tr>
+//               <th>#</th>
+//               <th>Image</th>
+//               <th>Description</th>
+//               <th>Title</th>
+//               <th>Likes</th>
+//               <th>thread_id</th>
+//               <th>Action</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {posts.map((post: Post) => {
+//               return (
+//                 <>
+//                   <tr key={post.id}>
+//                     <td>{post.id}</td>
+//                     <td><img src={post.image} width="50"/></td>
+//                     <td>{post.title}</td>
+//                     <td>{post.description}</td>
+//                     <td>{post.total_likes}</td>
+//                     <td>{post.thread_id}</td>
+//                     {/* Actions */}
+//                     <td>
+//                       <div className="btn-group mr-3">
+//                         <Link 
+//                           className="btn btn-sm btn-outline-secondary text-white"
+//                           to={`/posts/${post.id}/edit`}
+//                         >Edit</Link>
+//                         <a 
+//                           className="btn btn-sm btn-outline-secondary text-white"
+//                           href="#!"
+//                           onClick={() => del(post.id)}
+//                         >Delete</a>
+//                         <a 
+//                           className="btn btn-sm btn-outline-secondary text-white"
+//                           href="#!"
+//                           onClick={() => select(post.id)}
+//                         >View</a>
+//                         <Link 
+//                         className="btn btn-sm btn-outline-secondary text-white"
+//                           to={`/posts/${post.id}/comment_create`}
+//                         >Comment</Link>
+//                       </div>
+//                     </td>
+//                   </tr>
+//                   {/* comments */}
+//                   <tr>
+//                     <td colSpan={10}>
+//                       <div className="overflow-hidden" style={selected === post.id ? show : hide}>
+//                         <table className="table table-sm text-white">
+//                           <thead>
+//                             <tr>
+//                               <th>#</th>
+//                               <th>description</th>
+//                               <th>likes</th>
+//                             </tr>
+//                           </thead>
+//                           <tbody>
+//                           {post.comments.map((comment: Comments) => {
+//                             return (
+//                               <tr>
+//                                 <td>{comment.id}</td>
+//                                 <td>{comment.description}</td>
+//                                 <td>{comment.total_likes}</td>
+//                               </tr>
+//                             )
+//                           })}
+//                           </tbody>
+//                         </table>
+//                       </div>
+//                     </td>
+//                   </tr>
+//                 </>
+//               )
+//             })}
+//           </tbody>
+//         </table>
+//       </div> */}
