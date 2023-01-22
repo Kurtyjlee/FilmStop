@@ -9,7 +9,7 @@
   max-width: 100%;
   height: 100%;
   display: flex;
-  justify-content:space-around;
+  justify-content: left;
 
   li {
     color:white;
@@ -49,10 +49,15 @@
 .header-brand {
   --button-size: calc(var(--nav-size) * 0.5);
   height: var(--button-size);
-  padding: 1rem;
-  margin: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: large;
+}
+
+.header-container {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

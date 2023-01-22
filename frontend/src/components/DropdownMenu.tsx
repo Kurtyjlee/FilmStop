@@ -30,9 +30,12 @@ export const DropdownMenu = () => {
 
   return (
     <div className="dropdown">
-      <DropdownItem url="#!">My profile</DropdownItem>
+      <DropdownItem url="/profile" >My profile</DropdownItem>
       <DropdownItem url="#!" lefticon={<CogIcon/>} righticon={<ChevronIcon/>}>
         Settings
+      </DropdownItem>
+      <DropdownItem url="/login">
+        Logout
       </DropdownItem>
     </div>
   )

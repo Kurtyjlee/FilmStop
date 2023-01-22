@@ -7,13 +7,12 @@ export const SearchBar = () => {
 	const [open, setOpen] = useState(false);
 
 	return (
-		<li className='nav-item'>
+		<li className='search-bar-container'>
 			<input
 				className="search-bar"
 				name="SearchBar"
 				placeholder="Search"
 			/>
 		</li>
-		
 	);
 }

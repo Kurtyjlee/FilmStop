@@ -11,7 +11,7 @@ interface Props {
 export const HeaderBrand: FunctionComponent<Props> = ({icon, title, url, children}) => {
 
   return (
-    <li className="nav-item">
+    <li className="header-container">
       <a href={url} className="header-brand">
           {icon}{title}
       </a>

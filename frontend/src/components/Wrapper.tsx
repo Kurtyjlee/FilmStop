@@ -46,7 +46,7 @@ export const Wrapper = (props: any) => {
         <HeaderBrand title="FilmStop" url="/"/>
         <SearchBar />
         <IconContainer>
-          <HeaderItem icon={<PlusIcon/>} url="#!" />
+          <HeaderItem icon={<PlusIcon/>} url="/posts/create" />
           <HeaderItem icon={<BellIcon/>} url="#!" />
           <HeaderItem icon={<MessengerIcon/>} url="#!" />
           <HeaderItem icon={<CaretIcon/>} url="#!">
@@ -54,7 +54,7 @@ export const Wrapper = (props: any) => {
           </HeaderItem>
         </IconContainer>
       </Header>
-      {/* {props.children} */}
+      {props.children}
     </>
   )
 }
