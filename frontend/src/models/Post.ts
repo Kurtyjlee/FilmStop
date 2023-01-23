@@ -1,4 +1,5 @@
 import { Comments } from "./comments";
+import { Thread } from "./Thread";
 
 export class Post {
   constructor(
@@ -9,6 +10,7 @@ export class Post {
     public total_likes: number,
     public total_comments: number,
     public thread_id: number,
+    public thread: Thread,
     public comments: Comments[]
   ){
   }

@@ -9,6 +9,7 @@ import { Paginator } from "../../components/Paginator";
 import { Link, useParams } from "react-router-dom";
 import { Comments } from "../../models/comments";
 import { PostContainer } from "../../components/PostContainer";
+import { Thread } from "../../models/Thread";
 
 // For animation
 const hide = {
@@ -23,6 +24,7 @@ const show = {
 
 export const Posts = () => {
   const [posts, setPosts] = useState([]);
+  const [threads, setThreads] = useState([]);
 
   // Pagination
   const [page, setPage] = useState(1);
@@ -31,21 +33,23 @@ export const Posts = () => {
   // Animation
   const [selected, setSelected] = useState(0);
 
-  // user id
+  // thread id
   let id: any = useParams();
   let threadId:any = parseInt(id.id);
 
   useEffect(() => {
     (
       async () => {
-        const {data} = isNaN(threadId)
-          // When there is no threadId, show all pages
-          ? await axios.get(`posts?page=${page}`) 
-          // When there is threadId, only show pages associated with the threadId
-          : await axios.get(`posts/threads/${threadId}?page=${page}`)
+        let postData = null;
 
-        setPosts(data.data);
-        setLastPage(data.meta.last_page);
+        if (isNaN(threadId)) {
+          postData = await axios.get(`posts?page=${page}`)
+        } else {
+          postData = await axios.get(`posts/threads/${threadId}?page=${page}`)
+        }
+
+        setPosts(postData.data.data)
+        setLastPage(postData.data.meta.last_page)
       }
     )()
   }, [page, threadId]);
@@ -68,11 +72,10 @@ export const Posts = () => {
       <div className="main-post-container"> 
         {posts.map((post: Post) => {
          return (
-          <PostContainer post={post}/>
+          <PostContainer post={post} thread={post.thread}/>
          )
         })}
       </div>
-      
       
       {/* Pagination */}
       <div className="bottom-bar">

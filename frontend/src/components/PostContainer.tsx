@@ -2,17 +2,24 @@ import "./PostContainer.scss";
 
 import { FunctionComponent, ReactNode } from "react";
 import { Post } from "../models/Post";
+import { Thread } from "../models/Thread";
+import { Link } from "react-router-dom";
 
 interface Props {
   post: Post;
+  thread: Thread;
   children?: ReactNode;
 }
 
-export const PostContainer: FunctionComponent<Props> = ({post, children}) => {
+export const PostContainer: FunctionComponent<Props> = ({post, thread, children}) => {
   return (
     <div className="inner-post-container">
       <div className="title-container">
         <h3>{post.title}</h3>
+        <div className="thread-container">
+          <span className="thread-label">Thread: </span>
+          <Link to={`/posts/threads/${thread.id}`}>{thread.name}</Link>
+        </div>
       </div>
       <div className="image-container">
         <img src={post.image} width="50"/>
