@@ -10,6 +10,7 @@ import { Link, useParams } from "react-router-dom";
 import { Comments } from "../../models/comments";
 import { PostContainer } from "../../components/PostContainer";
 import { Thread } from "../../models/Thread";
+import { User } from "../../models/User";
 
 // For animation
 const hide = {
@@ -24,7 +25,7 @@ const show = {
 
 export const Posts = () => {
   const [posts, setPosts] = useState([]);
-  const [threads, setThreads] = useState([]);
+  const [user, setUser] = useState(new User());
 
   // Pagination
   const [page, setPage] = useState(1);
@@ -72,7 +73,7 @@ export const Posts = () => {
       <div className="main-post-container"> 
         {posts.map((post: Post) => {
          return (
-          <PostContainer post={post} thread={post.thread}/>
+          <PostContainer post={post} thread={post.thread} user={post.user}/>
          )
         })}
       </div>

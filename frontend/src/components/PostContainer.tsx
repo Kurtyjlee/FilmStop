@@ -4,14 +4,16 @@ import { FunctionComponent, ReactNode } from "react";
 import { Post } from "../models/Post";
 import { Thread } from "../models/Thread";
 import { Link } from "react-router-dom";
+import { User } from "../models/User";
 
 interface Props {
   post: Post;
   thread: Thread;
+  user: User;
   children?: ReactNode;
 }
 
-export const PostContainer: FunctionComponent<Props> = ({post, thread, children}) => {
+export const PostContainer: FunctionComponent<Props> = ({post, thread, user, children}) => {
   return (
     <div className="inner-post-container">
       <div className="title-container">
@@ -19,6 +21,10 @@ export const PostContainer: FunctionComponent<Props> = ({post, thread, children}
         <div className="thread-container">
           <span className="thread-label">Thread: </span>
           <Link to={`/posts/threads/${thread.id}`}>{thread.name}</Link>
+        </div>
+        <div className="thread-container">
+          <span className="thread-label">Posted by: </span>
+          <Link to="#!">{user.user_name}</Link>
         </div>
       </div>
       <div className="image-container">

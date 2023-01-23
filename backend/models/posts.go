@@ -13,7 +13,8 @@ type Post struct {
 	TotalComments int         `json:"total_comments"`
 	UpdatedAt     string      `json:"updated_at"`
 	CreatedAt     string      `json:"created_at"`
-	UserId        uint        `json:"user_id"`   //Users
+	UserId        uint        `json:"user_id"` //Users
+	User          User        `json:"user" gorm:"foreignKey:UserId"`
 	ThreadId      uint        `json:"thread_id"` //Threads
 	Thread        Thread      `json:"thread" gorm:"foreignKey:ThreadId"`
 	Comments      []Comment   `json:"comments" gorm:"foreignKey:PostId"`   //Comments
@@ -39,9 +40,9 @@ func (post *Post) Take(db *gorm.DB, limit int, offset int, filterType int) inter
 
 	// Different filters for posts
 	if filterType == 0 {
-		db.Preload("Comments").Preload("Thread").Offset(offset).Limit(limit).Find(&posts)
+		db.Preload("Comments").Preload("Thread").Preload("User").Preload("Likes").Offset(offset).Limit(limit).Find(&posts)
 	} else {
-		db.Preload("Comments").Preload("Thread").Offset(offset).Limit(limit).Where("thread_id = ?", filterType).Find(&posts)
+		db.Preload("Comments").Preload("Thread").Preload("User").Preload("Likes").Offset(offset).Limit(limit).Where("thread_id = ?", filterType).Find(&posts)
 	}
 
 	return posts

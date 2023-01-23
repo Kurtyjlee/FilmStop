@@ -43,7 +43,7 @@ func GetPost(c *fiber.Ctx) error {
 		Id: uint(id),
 	}
 
-	database.DB.Preload("Thread").Preload("Comments").Preload("Likes").Find(&post)
+	database.DB.Preload("Thread").Preload("Comments").Preload("Likes").Preload("User").Find(&post)
 
 	return c.JSON(post)
 }
