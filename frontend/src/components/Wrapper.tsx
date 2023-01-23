@@ -54,7 +54,9 @@ export const Wrapper = (props: any) => {
           </HeaderItem>
         </IconContainer>
       </Header>
-      {props.children}
+      <div className='body-container'>
+        {props.children}
+      </div>
     </>
   )
 }

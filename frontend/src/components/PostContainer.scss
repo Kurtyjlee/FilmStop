@@ -7,7 +7,8 @@
 
 .main-post-container {
     @include flex-center-column;
-    margin: 1rem 10rem;
+    margin: 1rem 1rem;
+    width: 600px;
 }
 
 .inner-post-container {
@@ -47,6 +48,13 @@
     }
 }
 
-.thread-label {
+.label {
     color: var(--text-color);
+}
+
+.likes-container {
+    width: 90%;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
 }

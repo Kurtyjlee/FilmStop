@@ -81,11 +81,6 @@ export const Posts = () => {
       {/* Pagination */}
       <div className="bottom-bar">
         <Paginator page={page} lastPage={lastPage} pageChanged={setPage}/>
-        <ul className="bottom-nav-list">
-          <li className="bottom-nav-item">
-            <Link className="btn btn-sm btn-outline-secondary" to="/posts/create">add</Link>
-          </li>
-        </ul>
       </div>
     </Wrapper>
   )

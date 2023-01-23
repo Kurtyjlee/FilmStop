@@ -19,16 +19,21 @@ export const PostContainer: FunctionComponent<Props> = ({post, thread, user, chi
       <div className="title-container">
         <h3>{post.title}</h3>
         <div className="thread-container">
-          <span className="thread-label">Thread: </span>
+          <span className="label">Thread: </span>
           <Link to={`/posts/threads/${thread.id}`}>{thread.name}</Link>
         </div>
         <div className="thread-container">
-          <span className="thread-label">Posted by: </span>
+          <span className="label">Posted by: </span>
           <Link to="#!">{user.user_name}</Link>
         </div>
       </div>
       <div className="image-container">
         <img src={post.image} width="50"/>
+      </div>
+      <div className="likes-container">
+        <span className="label">Likes: {post.total_likes}</span> 
+        <span>""</span> 
+        <span className="label">Comments: {post.total_comments}</span> 
       </div>
       <div className="desc-container">
         <p>{post.description}</p>
