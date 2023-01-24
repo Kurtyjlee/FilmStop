@@ -15,7 +15,7 @@ interface Props {
   command?: any
 }
 
-export const DropdownMenu = () => {
+export const DropdownMenu = (props: {loggedIn?: boolean, setLoggedIn?: (bool: boolean) => void}) => {
 
   const logout = async () => {
     // Send empty data in the post request
@@ -27,7 +27,7 @@ export const DropdownMenu = () => {
       <a href={url} className="menu-item" onClick={command}>
         <span className="icon-button">{lefticon}</span>
 
-        {children}
+        <span>{children}</span>
         
         <span className="icon-right">{righticon}</span>
       </a>
@@ -39,9 +39,12 @@ export const DropdownMenu = () => {
       <DropdownItem url="/settings" lefticon={<CogIcon/>}>
         Settings
       </DropdownItem>
-      <DropdownItem url="/login" command={logout}>
-        Logout
-      </DropdownItem>
+      {
+        props.loggedIn 
+          ? <DropdownItem url="/" command={logout}>Logout</DropdownItem>
+          : <DropdownItem url="/login">Login</DropdownItem>
+      }
+      
     </div>
   )
 }

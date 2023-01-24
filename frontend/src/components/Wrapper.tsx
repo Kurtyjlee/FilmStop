@@ -19,7 +19,7 @@ import { IconContainer } from './IconContainer'
 
 export const Wrapper = (props: any) => {
 
-  const [redirect, setRedirect] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   // Ensure user has logged in
   useEffect(() => {
@@ -28,16 +28,11 @@ export const Wrapper = (props: any) => {
         try {
           await axios.get("user");
         } catch (e) {
-          setRedirect(true);
+          setLoggedIn(false);
         }
       }
     )();
   }, []);
-
-  // If user has not logged in
-  if (redirect) {
-    return <Navigate to="/login" />;
-  }
 
   // Main header
   return (
@@ -47,10 +42,8 @@ export const Wrapper = (props: any) => {
         <SearchBar />
         <IconContainer>
           <HeaderItem icon={<PlusIcon/>} url="/posts/create" />
-          <HeaderItem icon={<BellIcon/>} url="#!" />
-          <HeaderItem icon={<MessengerIcon/>} url="#!" />
           <HeaderItem icon={<CaretIcon/>} url="#!">
-            <DropdownMenu />
+            <DropdownMenu loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
           </HeaderItem>
         </IconContainer>
       </Header>
