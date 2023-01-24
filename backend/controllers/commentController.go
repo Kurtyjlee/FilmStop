@@ -10,9 +10,6 @@ import (
 )
 
 func AllComments(c *fiber.Ctx) error {
-	if err := middleware.IsAuthorised(c, "comments"); err != nil {
-		return err
-	}
 
 	// Paginated
 	page, _ := strconv.Atoi(c.Query("page", "1"))
@@ -36,9 +33,6 @@ func CreateComment(c *fiber.Ctx) error {
 }
 
 func GetComment(c *fiber.Ctx) error {
-	if err := middleware.IsAuthorised(c, "comments"); err != nil {
-		return err
-	}
 	// Getting the id from the url
 	id, _ := strconv.Atoi(c.Params("id"))
 

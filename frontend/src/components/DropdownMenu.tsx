@@ -1,6 +1,5 @@
 // svg
 import { ReactComponent as CogIcon } from './../icons/cog.svg'
-import { ReactComponent as ChevronIcon } from './../icons/chevron.svg'
 
 // Style
 import './../styles/DropdownMenu.scss';
@@ -37,8 +36,7 @@ export const DropdownMenu = () => {
 
   return (
     <div className="dropdown">
-      <DropdownItem url="/profile" >My profile</DropdownItem>
-      <DropdownItem url="#!" lefticon={<CogIcon/>} righticon={<ChevronIcon/>}>
+      <DropdownItem url="/settings" lefticon={<CogIcon/>}>
         Settings
       </DropdownItem>
       <DropdownItem url="/login" command={logout}>

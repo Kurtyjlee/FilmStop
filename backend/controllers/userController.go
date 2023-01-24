@@ -50,11 +50,6 @@ func CreateUser(c *fiber.Ctx) error {
 }
 
 func GetUser(c *fiber.Ctx) error {
-	// permissions middleware
-	if err := middleware.IsAuthorised(c, "users"); err != nil {
-		return err
-	}
-
 	// Getting the id from the url
 	id, _ := strconv.Atoi(c.Params("id"))
 

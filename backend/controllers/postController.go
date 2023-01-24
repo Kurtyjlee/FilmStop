@@ -33,9 +33,6 @@ func CreatePost(c *fiber.Ctx) error {
 }
 
 func GetPost(c *fiber.Ctx) error {
-	if err := middleware.IsAuthorised(c, "posts"); err != nil {
-		return err
-	}
 	// Getting the id from the url
 	id, _ := strconv.Atoi(c.Params("id"))
 

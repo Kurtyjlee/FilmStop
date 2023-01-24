@@ -9,7 +9,7 @@ import { UserEdit } from './pages/users/UserEdit';
 import { Posts } from './pages/posts/Posts';
 import { PostCreate } from './pages/posts/PostCreate';
 import { PostEdit } from './pages/posts/PostEdit';
-import Profile from './pages/Profile';
+import Profile from './pages/Settings';
 import { CommentCreate } from './pages/comments/CommentCreate';
 import { Threads } from './pages/threads/Threads';
 
@@ -22,7 +22,7 @@ function App() {
           <Route path={'/'} element={<Posts/>}/>
           <Route path={'/register'} element={<Register/>} />
           <Route path={'/login'} element={<Login/>} />
-          <Route path={'/profile'} element={<Profile/>} />
+          <Route path={'/settings'} element={<Profile/>} />
 
           {/* users */}
           <Route path={'/users'} element={<Users/>} />
