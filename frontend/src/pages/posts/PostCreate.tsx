@@ -1,6 +1,8 @@
+import './PostCreate.scss'
+
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { ImageUpload } from "../../components/ImageUpload";
 import { Wrapper } from "../../components/Wrapper";
 import { useForm } from "../../customHooks/useForm";
@@ -54,14 +56,27 @@ export const PostCreate = () => {
   );
 
   if (redirect) {
-    return <Navigate to={"/posts"} />
+    return <Navigate to={"/"} />
   }
 
   return (
     <Wrapper>
-      <h3>create post</h3>
-      <main className="form-register">
-        <form onSubmit={handleSubmit}>
+      <div className='create-post-container'>
+        <form className="main-container" onSubmit={handleSubmit}>
+          <h3 className="post-label">create post</h3>
+          <hr></hr>
+          <select
+            className="form-dropdown" 
+            name="thread_id"
+            required
+            onChange={handleInputChange}
+          >
+            {threads.map((t: Thread) => {
+              return (
+                <option key={t.id} value={t.id}>{t.name}</option>
+              );
+            })}
+          </select>
           <input 
             className="form-input" 
             placeholder="Title"
@@ -88,28 +103,17 @@ export const PostCreate = () => {
               onChange={e => setImage(e.target.value)}
             />
             <ImageUpload uploaded={setImage}/>
-          </div>
-
-          <select
-            className="form-input" 
-            name="thread_id"
-            required
-            onChange={handleInputChange}
-          >
-            {threads.map((t: Thread) => {
-              return (
-                <option key={t.id} value={t.id}>{t.name}</option>
-              );
-            })}
-          </select>
-          
+          </div>            
 
           {/* Like feature have to be coded */}
-
-          <button type="submit">Create</button>
-
+          
+          <div className="button-container">
+            <button className="action-button-dark" onClick={() => {setRedirect(true)}}>Cancel</button>
+            <button className="action-button-white" type="submit">Post</button>
+          </div>
         </form>
-      </main>
+      </div>
+      
     </Wrapper>
   );
 }

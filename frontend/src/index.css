@@ -22,6 +22,7 @@ body {
   --text-color: #DADCE1;
   --nav-size: 60px;
   --border: 1px solid #474A4D;
+  --border-light: 1px solid #DADCE1;
   --border-radius: 8px;
   --speed: 500ms;
   --speed-faster: 150ms;
@@ -38,8 +39,41 @@ a {
   text-decoration: none;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .body-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.action-button-white {
+  background-color: var(--text-color);
+  border: var(--border);
+  border-radius: 16px;
+  padding: 0.4rem 0.8rem;
+  color: var(--bg);
+  font-size: 0.9rem;
+  margin: 0rem 0.1rem;
+}
+
+.action-button-white:hover {
+  filter: brightness(1.2);
+}
+
+.action-button-dark {
+  background-color: var(--bg-accent);
+  border: var(--border-light);
+  border-radius: 16px;
+  padding: 0.4rem 0.8rem;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  text-decoration: none;
+  margin-right: 0.5rem;
+}
+
+.action-button-dark:hover {
+  filter: brightness(1.2);
 }
