@@ -9,7 +9,7 @@ export const PostEdit = () => {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState([]);
   const likes = 0;
 
   // For the image
@@ -48,13 +48,13 @@ export const PostEdit = () => {
     setRedirect(true);
   }
 
-  const updateImage = (url: string) => {
-    // Change the ref
-    if (ref.current) {
-      ref.current.value = url;
-    }
-    setImage(url);
-  }
+  // const updateImage = (url: string) => {
+  //   // Change the ref
+  //   if (ref.current) {
+  //     ref.current.value = url;
+  //   }
+  //   setImage(url);
+  // }
 
   if (redirect) {
     return <Navigate to={"/posts"} />
@@ -81,21 +81,7 @@ export const PostEdit = () => {
             required 
             onChange={e => setDescription(e.target.value)}
           />
-
-          <div className="input-group">
-            <input 
-              className="form-input" 
-              placeholder="Image" 
-              name="image"
-              ref={ref}
-              defaultValue={image}
-              required 
-              onChange={e => setImage(e.target.value)}
-            />
-            <ImageUpload uploaded={updateImage}/>
-          </div>
           
-
           {/* Like feature have to be coded */}
 
           <button type="submit">Update</button>

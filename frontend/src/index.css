@@ -39,8 +39,12 @@ a {
   text-decoration: none;
 }
 
-button:hover {
+button {
   cursor: pointer;
+}
+
+textarea {
+  min-height: 100px;
 }
 
 .body-container {

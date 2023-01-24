@@ -63,7 +63,7 @@ export const PostCreate = () => {
     <Wrapper>
       <div className='create-post-container'>
         <form className="main-container" onSubmit={handleSubmit}>
-          <h3 className="post-label">create post</h3>
+          <h3 className="post-label">Create a post</h3>
           <hr></hr>
           <select
             className="form-dropdown" 
@@ -94,16 +94,8 @@ export const PostCreate = () => {
           />
 
           <div className="input-group">
-            <input 
-              className="form-input" 
-              placeholder="Image" 
-              name="image"
-              value={image}
-              required 
-              onChange={e => setImage(e.target.value)}
-            />
-            <ImageUpload uploaded={setImage}/>
-          </div>            
+            <ImageUpload uploaded={setImage} value={image}/>
+          </div>          
 
           {/* Like feature have to be coded */}
           

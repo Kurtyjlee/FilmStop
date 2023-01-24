@@ -8,7 +8,7 @@ type Post struct {
 	Id            uint        `json:"id" gorm:"primaryKey"`
 	Title         string      `json:"title"`
 	Description   string      `json:"description"`
-	Image         string      `json:"image"`
+	Images        string    `json:"image"`
 	TotalLikes    int         `json:"total_likes"`
 	TotalComments int         `json:"total_comments"`
 	UpdatedAt     string      `json:"updated_at"`
