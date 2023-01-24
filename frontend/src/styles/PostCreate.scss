@@ -1,0 +1,82 @@
+@mixin flex-start-column {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+@mixin flex-center-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+@mixin form-props {
+    background-color: var(--bg) !important;
+    color: var(--text-color) !important;
+    border: var(--border) !important;
+    border-radius: 10px !important;
+    padding: 0.5rem 0.8rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.post-label {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.create-post-container {
+    margin-top: 3rem;
+    @include flex-center-column;
+}
+
+.main-container {
+    @include flex-start-column;
+    width: 600px;
+    padding: 1rem;
+}
+
+.form-input {
+    @include form-props;
+    min-width: 95%;
+    max-width: 95%;
+
+    &:hover {
+        filter: brightness(1.2);
+    }
+}
+
+.form-dropdown {
+    @include form-props;
+    width: 30%;
+
+    &:hover {
+        filter: brightness(1.2);
+    }
+}
+
+hr {
+    height:1px;
+    border-width:0;
+    background-color: var(--bg-accent);
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.input-group {
+    @include flex-start-column;
+    margin-bottom: 1rem;
+    min-width: 97%;
+    max-width: 97%;
+}
+
+.inner-main-container {
+    @include flex-start-column;
+    width: 100%;
+}
+
+.form-label {
+    color: var(--text-color);
+    margin-bottom: 0.3rem;
+}
