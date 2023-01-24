@@ -1,4 +1,4 @@
-import './PostCreate.scss'
+import './../../styles/PostCreate.scss'
 
 import axios from "axios";
 import React, { useEffect, useState } from "react";

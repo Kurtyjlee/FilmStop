@@ -1,4 +1,4 @@
-import "./ImageUpload.scss";
+import "./../styles/ImageUpload.scss";
 
 import axios from "axios";
 import React, { useCallback, useState } from "react";

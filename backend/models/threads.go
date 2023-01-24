@@ -3,9 +3,10 @@ package models
 import "gorm.io/gorm"
 
 type Thread struct {
-	Id    uint   `json:"id"`
-	Name  string `json:"name"`
-	Posts []Post `json:"posts" gorm:"foreignKey:ThreadId"`
+	Id          uint   `json:"id"`
+	Name        string `json:"name"`
+	Posts       []Post `json:"posts" gorm:"foreignKey:ThreadId"`
+	Description string `json:"description"`
 }
 
 // Required functions

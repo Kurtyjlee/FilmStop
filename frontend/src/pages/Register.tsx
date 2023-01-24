@@ -1,3 +1,5 @@
+import "./../styles/PostCreate.scss"
+
 import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "../customHooks/useForm";
@@ -43,26 +45,19 @@ export const Register = () => {
 
   // main
   return (
-    <main className="form-register">
-      <form onSubmit={handleSubmit}>
-        <h1 className="register-header">Please register</h1>
-
+    <main className="create-post-container">
+      <form className="main-container" onSubmit={handleSubmit}>
+        <h1 className="post-label">Register</h1>
+        <hr />
+        <label className="form-label">Username</label>
         <input 
           className="form-input" 
-          placeholder="First Name"
-          name="first_name"  
+          placeholder="Username"
+          name="user_name"  
           required 
           onChange={handleInputChange}
         />
-
-        <input 
-          className="form-input" 
-          placeholder="Last Name"
-          name="last_name"   
-          required 
-          onChange={handleInputChange}
-        />
-
+        <label className="form-label">Email</label>
         <input 
           className="form-input" 
           placeholder="Email" 
@@ -70,7 +65,7 @@ export const Register = () => {
           required 
           onChange={handleInputChange}
         />
-
+        <label className="form-label">Password</label>
         <input 
           className="form-input" 
           placeholder="Password"
@@ -79,7 +74,7 @@ export const Register = () => {
           required
           onChange={handleInputChange}
         />
-        
+        <label className="form-label">Confirm Password</label>
         <input 
           className="form-input" 
           placeholder="Confirm Password"
@@ -88,8 +83,7 @@ export const Register = () => {
           required
           onChange={handleInputChange}
         />
-
-        <button type="submit">Register</button>
+        <button className="action-button-white" type="submit">Register</button>
 
       </form>
 

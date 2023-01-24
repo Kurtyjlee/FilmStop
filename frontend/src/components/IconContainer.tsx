@@ -1,4 +1,4 @@
-import './Header.scss';
+import './../styles/Header.scss';
 
 import { PropsWithChildren } from 'react';
 

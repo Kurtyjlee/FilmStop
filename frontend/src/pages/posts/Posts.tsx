@@ -1,4 +1,4 @@
-import "./../../components/PostContainer.scss";
+import "./../../styles/PostContainer.scss";
 
 import React from "react";
 import { Wrapper } from "../../components/Wrapper";

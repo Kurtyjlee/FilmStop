@@ -1,4 +1,4 @@
-import './Header.scss';
+import './../styles/Header.scss';
 
 import axios from 'axios';
 import { PropsWithChildren, useEffect, useState } from 'react';

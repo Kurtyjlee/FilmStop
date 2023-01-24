@@ -1,8 +1,10 @@
+import "./../styles/PostCreate.scss"
+
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useForm } from "../customHooks/useForm";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 export const Login = () => {
 
@@ -35,9 +37,11 @@ export const Login = () => {
   
   // main
   return (
-    <main className="form-login">
-      <form onSubmit={handleSubmit}>
-        <h1 className="login-header">Please Login</h1>
+    <main className="create-post-container">
+      <form className="main-container" onSubmit={handleSubmit}>
+        <h1 className="post-label">Login</h1>
+        <hr />
+        <label className="form-label">Email</label>
         <input 
           className="form-input" 
           placeholder="Email" 
@@ -45,6 +49,7 @@ export const Login = () => {
           required
           onChange={handleInputChange}
         />
+        <label className="form-label">Password</label>
         <input 
           className="form-input" 
           placeholder="Password"
@@ -53,8 +58,12 @@ export const Login = () => {
           required
           onChange={handleInputChange}
         />
-        <button type="submit">Login</button>
+        <button className="action-button-white" type="submit">Login</button>
       </form>
+      <div>
+        <span className="label">Don't have an account yet? </span>
+        <Link to="/register">Register here!</Link>
+      </div>
     </main>
   )
 }

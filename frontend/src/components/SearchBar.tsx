@@ -1,5 +1,5 @@
-import './SearchBar.scss'
-import './Header.scss';
+import './../styles/SearchBar.scss'
+import './../styles/Header.scss';
 
 import { FunctionComponent, useState } from "react";
 

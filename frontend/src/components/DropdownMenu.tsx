@@ -3,7 +3,7 @@ import { ReactComponent as CogIcon } from './../icons/cog.svg'
 import { ReactComponent as ChevronIcon } from './../icons/chevron.svg'
 
 // Style
-import './DropdownMenu.scss';
+import './../styles/DropdownMenu.scss';
 
 import { FunctionComponent, JSXElementConstructor, PropsWithChildren, ReactNode } from "react";
 import axios from 'axios';

@@ -1,5 +1,5 @@
 // Styles
-import "./Users.scss";
+import "./../../styles/Users.scss";
 
 // Dependencies
 import React, { useEffect, useState } from "react";
