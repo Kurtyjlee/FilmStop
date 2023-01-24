@@ -69,7 +69,7 @@ export const Posts = () => {
       <div className="main-post-container"> 
         {posts.map((post: Post) => {
          return (
-          <PostContainer post={post} thread={post.thread} user={post.user}/>
+          <PostContainer post={post} thread={post.thread} user={post.user} setPosts={setPosts} posts={posts}/>
          )
         })}
       </div>

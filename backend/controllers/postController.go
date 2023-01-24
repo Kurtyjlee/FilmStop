@@ -74,6 +74,9 @@ func DeletePost(c *fiber.Ctx) error {
 		Id: uint(id),
 	}
 
+	var result string
+
+	database.DB.Table("comments").Where("post_id", id).Delete(&result)
 	database.DB.Delete(&post)
 
 	return nil

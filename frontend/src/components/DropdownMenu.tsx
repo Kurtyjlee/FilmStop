@@ -44,7 +44,6 @@ export const DropdownMenu = (props: {loggedIn?: boolean, setLoggedIn?: (bool: bo
           ? <DropdownItem url="/" command={logout}>Logout</DropdownItem>
           : <DropdownItem url="/login">Login</DropdownItem>
       }
-      
     </div>
   )
 }

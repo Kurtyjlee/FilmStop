@@ -6,6 +6,8 @@ import { ReactComponent as CaretIcon } from './../icons/caret.svg'
 import { ReactComponent as MessengerIcon } from './../icons/messenger.svg'
 import { ReactComponent as PlusIcon } from './../icons/plus.svg'
 
+import "./../styles/Header.scss"
+
 import React from "react";
 import { Header } from "./Header";
 import { useEffect, useState } from "react";
@@ -41,8 +43,8 @@ export const Wrapper = (props: any) => {
         <HeaderBrand title="FilmStop" url="/"/>
         <SearchBar />
         <IconContainer>
-          <HeaderItem icon={<PlusIcon/>} url="/posts/create" />
-          <HeaderItem icon={<CaretIcon/>} url="#!">
+          <HeaderItem className="icon-button" icon={<PlusIcon/>} url="/posts/create" />
+          <HeaderItem className="icon-button" icon={<CaretIcon/>}>
             <DropdownMenu loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
           </HeaderItem>
         </IconContainer>

@@ -18,6 +18,11 @@
     border-radius: 10px;
     background-color: var(--bg);
     width: 100%;
+    cursor: pointer;
+
+    &:hover {
+        border-color: var(--text-color);
+    }
 }
 
 .title-container {
@@ -27,6 +32,12 @@
     h3 {
         color: var(--text-color);
     }
+}
+
+.top-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .image-container {
@@ -52,9 +63,56 @@
     color: var(--text-color);
 }
 
+.label-likes {
+    color: var(--text-color);
+    margin-right: 0.5rem;
+}
+
 .likes-container {
     width: 90%;
     margin-bottom: 1rem;
     display: flex;
     align-items: flex-start;
+}
+
+.small-dropdown {
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    width: 100px;
+    transform: translateY(45px) translateX(40px);
+    background-color: var(--bg);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1rem;
+    overflow: hidden;
+
+    a {
+        cursor: pointer;
+    }
+}
+
+.options {
+    --button-size: calc(var(--nav-size) * 0.5);
+    width: var(--button-size);
+    height: var(--button-size);
+    border-radius: 50%;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  
+    &:hover {
+      filter: brightness(1.2);
+      background-color: var(--bg);
+    }
+  
+    svg {
+      fill: var(--text-color);
+      width: 20px;
+      height: 20px;
+    }
 }
