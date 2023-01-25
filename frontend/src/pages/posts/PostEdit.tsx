@@ -1,16 +1,20 @@
+import './../../styles/PostCreate.scss'
+
 import axios from "axios";
 import React, { SyntheticEvent, useEffect, useRef, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
-import { ImageUpload } from "../../components/ImageUpload";
 import { Wrapper } from "../../components/Wrapper";
+import { Thread } from '../../models/Thread';
+import { ImageUpload } from '../../components/ImageUpload';
 
 export const PostEdit = () => {
   const [redirect, setRedirect] = useState(false);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState([]);
-  const likes = 0;
+  const [image, setImage] = useState("");
+  const [threads, setThreads] = useState([]);
+  const [threadId, setThreadId] = useState(0);
 
   // For the image
   const ref = useRef<HTMLInputElement>(null);
@@ -28,6 +32,10 @@ export const PostEdit = () => {
         setTitle(data.title);
         setDescription(data.description);
         setImage(data.image);
+
+        const threadData = await axios.get("threads");
+
+        setThreads(threadData.data.data);   
       }
     )();
   }, [postId]);
@@ -42,7 +50,6 @@ export const PostEdit = () => {
       "title": title,
       "description": description,
       "image": image,
-      "likes": likes
     });
 
     setRedirect(true);
@@ -54,8 +61,22 @@ export const PostEdit = () => {
 
   return (
     <Wrapper>
-      <main className="form-register">
+      <div className='create-post-container'>
         <form onSubmit={submit}>
+          <h3 className="post-label">Edit</h3>
+          <hr />
+          <select
+            className="form-dropdown" 
+            name="thread_id"
+            required
+            onChange={(e) => setThreadId(+e.target.value)}
+          >
+            {threads.map((t: Thread) => {
+              return (
+                <option key={t.id} value={t.id}>{t.name}</option>
+              );
+            })}
+          </select>
           <input 
             className="form-input" 
             placeholder="Title"
@@ -73,13 +94,19 @@ export const PostEdit = () => {
             required 
             onChange={e => setDescription(e.target.value)}
           />
-          
-          {/* Like feature have to be coded */}
 
-          <button type="submit">Update</button>
+          <div className="input-group">
+            <ImageUpload uploaded={setImage} value={image}/>
+          </div>  
+
+          <div className="button-container">
+            <button className="action-button-dark" onClick={() => {setRedirect(true)}}>Cancel</button>
+            <button className="action-button-white" type="submit">Change</button>
+          </div>
 
         </form>
-      </main>
+      </div>
+      
     </Wrapper>
   );
 }

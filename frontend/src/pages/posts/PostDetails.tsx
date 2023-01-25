@@ -73,7 +73,7 @@ export const PostDetails = () => {
           <MakeCommentContainer postId={postId} user={user} setComments={setComments} comments={comments}/>
           <hr />
           <div className="start-container">
-            <h3 className="label">Comments</h3>
+            <h3 className="post-label">Comments</h3>
           </div>
           {comments.map((comment: Comments) => {
             return (

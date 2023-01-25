@@ -45,24 +45,3 @@ export const Header = (props: PropsWithChildren) => {
     </nav>
   )
 }
-
-// {/* <nav className="navbar">
-//       <Link className="nav-brand" to="/">Photo-webapp</Link>
-//       <ul className="nav-list">  
-//         <li className="nav-item">
-//           <Link to="/threads">Threads</Link>
-//         </li> 
-//         <li className="nav-item">
-//         </li>
-//         <li className="nav-item">
-//           <Link to="/users">Users</Link>
-//         </li> 
-//         <li className="nav-item">
-//           <Link to="/profile">{user.user_name}</Link>
-//         </li> 
-//         <li className="nav-item">
-//           <Link to="/login" onClick={logout}>Sign out</Link>
-//         </li> 
-//       </ul> 
-//     </nav> */}
-
