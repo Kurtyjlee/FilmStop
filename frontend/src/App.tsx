@@ -10,7 +10,7 @@ import { Posts } from './pages/posts/Posts';
 import { PostCreate } from './pages/posts/PostCreate';
 import { PostEdit } from './pages/posts/PostEdit';
 import Profile from './pages/Settings';
-import { CommentCreate } from './pages/comments/CommentCreate';
+import { PostDetails } from './pages/posts/PostDetails';
 import { Threads } from './pages/threads/Threads';
 
 // Main app
@@ -35,7 +35,7 @@ function App() {
           <Route path={'/posts/threads/:id/'} element={<Posts/>} />
 
           {/* Create comments */}
-          <Route path={'/posts/:id/comment_create'} element={<CommentCreate/>} />
+          <Route path={'/posts/:id'} element={<PostDetails/>} />
 
           {/* threads */}
           <Route path={'/threads'} element={<Threads/>} />

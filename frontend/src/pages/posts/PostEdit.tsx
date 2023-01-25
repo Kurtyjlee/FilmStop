@@ -48,16 +48,8 @@ export const PostEdit = () => {
     setRedirect(true);
   }
 
-  // const updateImage = (url: string) => {
-  //   // Change the ref
-  //   if (ref.current) {
-  //     ref.current.value = url;
-  //   }
-  //   setImage(url);
-  // }
-
   if (redirect) {
-    return <Navigate to={"/posts"} />
+    return <Navigate to={"/"} />
   }
 
   return (

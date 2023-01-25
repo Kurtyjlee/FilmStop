@@ -25,6 +25,16 @@
     }
 }
 
+.inner-post-container-borderless {
+    @include flex-center-column;
+    margin-bottom: 1rem;
+    border: var(--border);
+    border-radius: 10px;
+    background-color: var(--bg);
+    width: 100%;
+    cursor: pointer;
+}
+
 .title-container {
     width: 90%;
     margin: 1rem;
@@ -115,4 +125,23 @@
       width: 20px;
       height: 20px;
     }
+}
+
+.make-comment-container {
+    width:90%;
+    padding: 1rem;
+}
+
+.comment-footer {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+}
+
+.start-container {
+    width:100%;
+    display: flex;
+    align-items: start;
+    margin-left: 2rem;
 }

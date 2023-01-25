@@ -6,8 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Post } from "../../models/Post";
 import { Paginator } from "../../components/Paginator";
-import { Link, useParams } from "react-router-dom";
-import { Comments } from "../../models/comments";
+import { useParams } from "react-router-dom";
 import { PostContainer } from "../../components/PostContainer";
 
 // For animation
