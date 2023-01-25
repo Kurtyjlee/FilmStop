@@ -5,9 +5,8 @@ import (
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
+	"os"
 )
-
-const SecretKey = "secret"
 
 // Generate jwt token
 func GenerateJwt(issuer string) (string, error) {
@@ -20,13 +19,13 @@ func GenerateJwt(issuer string) (string, error) {
 	})
 
 	// Generating jwt token
-	return claims.SignedString([]byte(SecretKey))
+	return claims.SignedString([]byte(os.Getenv("SECRET_KEY")))
 }
 
 // Get the user id of the cookie
 func ParseJwt(cookie string) (string, error) {
 	token, err := jwt.ParseWithClaims(cookie, &jwt.StandardClaims{}, func(t *jwt.Token) (interface{}, error) {
-		return []byte(SecretKey), nil
+		return []byte(os.Getenv("SECRET_KEY")), nil
 	})
 
 	if err != nil || !token.Valid {
