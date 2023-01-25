@@ -24,6 +24,12 @@ export const PostEdit = () => {
   useEffect(() => {
     (
       async () => {
+        try {
+          const {data} = await axios.get(`user`);
+
+        } catch (e) {
+            setRedirect(true);
+        }
         const {data} = await axios.get(`posts/${postId}`);
 
         setTitle(data.title);

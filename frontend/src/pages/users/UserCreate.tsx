@@ -23,6 +23,12 @@ export const UserCreate = () => {
   useEffect(() => {
     (
       async () => {
+        try {
+          const {data} = await axios.get(`user`);
+
+        } catch (e) {
+            setRedirect(true);
+        }
         const {data} = await axios.get("roles");
         setRoles(data);
       }
@@ -46,7 +52,7 @@ export const UserCreate = () => {
   );
 
   if (redirect) {
-    return <Navigate to={"/users"} />
+    return <Navigate to={"/"} />
   }
 
   return (

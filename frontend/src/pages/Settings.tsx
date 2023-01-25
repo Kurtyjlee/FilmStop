@@ -3,6 +3,7 @@ import './../styles/PostCreate.scss';
 import axios from "axios";
 import React, { SyntheticEvent, useEffect, useState } from "react";
 import { Wrapper } from "../components/Wrapper";
+import { Navigate } from 'react-router-dom';
 
 export const Settings = () => {
 
@@ -10,10 +11,18 @@ export const Settings = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [redirect, setRedirect] = useState(false);
   
   useEffect(() => {
     (
       async () => {
+        try {
+          const {data} = await axios.get(`user`);
+
+        } catch (e) {
+            setRedirect(true);
+        }
+
         const {data} = await axios.get("user");
 
         setUsername(data.user_name);
@@ -38,6 +47,10 @@ export const Settings = () => {
       password: password,
       password_confirm: passwordConfirm
     })
+  }
+
+  if (redirect) {
+    return <Navigate to={"/"} />
   }
 
   return (
