@@ -32,7 +32,6 @@ export const PostDetails = () => {
     []
   ));
   const [comments, setComments] = useState([]);
-  const [empty, setEmpty] = useState(false);
 
   // post id
   let id: any = useParams();
@@ -41,15 +40,10 @@ export const PostDetails = () => {
   useEffect(() => {
     (
       async () => {
-        try {
-          const userData = await axios.get("user")
-          setUser(userData.data);
-        } catch (e) {
-          setEmpty(true);
-        }
-        
+        const userData = await axios.get("user")
         const {data} = await axios.get(`posts/${postId}`)
-        
+
+        setUser(userData.data);
         setPost(new Post(
           data.id,
           data.title,
@@ -75,7 +69,7 @@ export const PostDetails = () => {
       </div>
       <div className="main-post-container">
         <div className="inner-post-container-borderless">
-          <MakeCommentContainer postId={postId} user={user} setComments={setComments} comments={comments} empty={empty}/>
+          <MakeCommentContainer postId={postId} user={user} setComments={setComments} comments={comments}/>
           <hr />
           <div className="start-container">
             <h3 className="post-label">Comments</h3>

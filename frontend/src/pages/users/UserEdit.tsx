@@ -22,13 +22,6 @@ export const UserEdit = () => {
   useEffect(() => {
     (
       async () => {
-        try {
-          const {data} = await axios.get(`user`);
-
-        } catch (e) {
-            setRedirect(true);
-        }
-
         const response = await axios.get("roles");
         setRoles(response.data);
 
@@ -56,7 +49,7 @@ export const UserEdit = () => {
   }
 
   if (redirect) {
-    return <Navigate to={"/"} />
+    return <Navigate to={"/users"} />
   }
 
   return (

@@ -29,13 +29,6 @@ export const PostCreate = () => {
   useEffect(() => {
     (
       async () => {
-        try {
-          const {data} = await axios.get(`user`);
-
-        } catch (e) {
-            setRedirect(true);
-        }
-
         const {data} = await axios.get("threads");
 
         setThreads(data.data);   

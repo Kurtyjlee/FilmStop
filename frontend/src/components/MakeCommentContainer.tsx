@@ -11,10 +11,9 @@ interface Props {
   user: User;
   setComments: ([]: any) => void;
   comments: Array<Comments>;
-  empty?: Boolean
 }
 
-export const MakeCommentContainer:FunctionComponent<Props> = ({postId, user, setComments, comments, empty}) => {
+export const MakeCommentContainer:FunctionComponent<Props> = ({postId, user, setComments, comments}) => {
 
   const [description, setDescription] = useState("")
 
@@ -38,27 +37,20 @@ export const MakeCommentContainer:FunctionComponent<Props> = ({postId, user, set
 
   return (
     <div className="make-comment-container">
-      {
-        empty
-          ? <p className="label">Login or register before you can comment</p> 
-          : (
-            <form onSubmit={submit}>
-              <textarea
-                className="form-input-no-margin" 
-                placeholder="Description"
-                name="description"   
-                required 
-                onChange={(e) => setDescription(e.target.value)}
-              />
-              {/* Like feature have to be coded */}
+      <form onSubmit={submit}>
+        <textarea
+          className="form-input-no-margin" 
+          placeholder="Description"
+          name="description"   
+          required 
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        {/* Like feature have to be coded */}
 
-              <div className="comment-footer">
-                <button className="action-button-white" type="submit">Comment</button>
-              </div>
-            </form>
-          )
-      }
-      
+        <div className="comment-footer">
+          <button className="action-button-white" type="submit">Comment</button>
+        </div>
+      </form>
     </div>
   )
 }
