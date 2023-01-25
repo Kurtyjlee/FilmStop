@@ -1,12 +1,8 @@
 import "./../styles/PostContainer.scss";
 import "./../styles/PostCreate.scss";
 
-import { User } from "../models/User";
-import { useForm } from "../customHooks/useForm";
 import { FunctionComponent, useEffect, useState } from "react";
 import axios from "axios";
-import { Post } from "../models/Post";
-import { Thread } from "../models/Thread";
 
 interface Props {
   commentDesc?: string;
@@ -17,7 +13,7 @@ interface Props {
 export const CommentContainer:FunctionComponent<Props> = ({commentDesc, commentLikes, commentUser}) => {
 
   const [username, setUsername] = useState("")
-  const [userId, setUserId] = useState(0);
+  // const [userId, setUserId] = useState(0);
 
   useEffect(() => {
     (
@@ -25,11 +21,10 @@ export const CommentContainer:FunctionComponent<Props> = ({commentDesc, commentL
         const {data} = await axios.get(`users/${commentUser}`);
 
         setUsername(data.user_name);
-        setUserId(data.id);
-
+        // setUserId(data.id);
       }
     )();
-  }, [])
+  }, [commentUser]);
 
   return (
     <div className="make-comment-container">

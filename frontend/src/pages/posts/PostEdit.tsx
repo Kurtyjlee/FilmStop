@@ -1,7 +1,7 @@
 import './../../styles/PostCreate.scss'
 
 import axios from "axios";
-import React, { SyntheticEvent, useEffect, useRef, useState } from "react";
+import React, { SyntheticEvent, useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { Wrapper } from "../../components/Wrapper";
 import { Thread } from '../../models/Thread';
@@ -15,9 +15,6 @@ export const PostEdit = () => {
   const [image, setImage] = useState("");
   const [threads, setThreads] = useState([]);
   const [threadId, setThreadId] = useState(0);
-
-  // For the image
-  const ref = useRef<HTMLInputElement>(null);
 
   // user id
   let id: any = useParams();
@@ -50,6 +47,7 @@ export const PostEdit = () => {
       "title": title,
       "description": description,
       "image": image,
+      "thread_id": threadId,
     });
 
     setRedirect(true);

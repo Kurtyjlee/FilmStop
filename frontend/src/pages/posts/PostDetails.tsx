@@ -4,7 +4,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Wrapper } from "../../components/Wrapper";
-import { useForm } from "../../customHooks/useForm";
 import { PostContainer } from "../../components/PostContainer";
 import { User } from "../../models/User";
 import { Post } from "../../models/Post";
@@ -61,7 +60,7 @@ export const PostDetails = () => {
         setComments(data.comments);
       }
     )();
-  }, [])
+  }, [postId])
 
   return (
     <Wrapper>

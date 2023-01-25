@@ -5,18 +5,16 @@ import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 
 export const ImageUpload = (props: {uploaded: (url: string) => void, value: string}) => {
-  const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const onDrop = useCallback((acceptedFiles: any) => {
-    setFiles(acceptedFiles);
     setLoading(true);
     upload(acceptedFiles)
      .finally(() => setLoading(false));
     console.log(acceptedFiles);
   },[]);
 
-  const {getRootProps, getInputProps, isDragAccept, isDragReject} = useDropzone({
+  const {getRootProps, getInputProps, isDragReject} = useDropzone({
     onDrop,
     accept: {
       'image/jpeg': [],
@@ -53,11 +51,3 @@ export const ImageUpload = (props: {uploaded: (url: string) => void, value: stri
     </div>
   );
 }
-
-// <label>
-//  Upload 
-// <input 
-//   type="file" 
-//   hidden 
-//   onChange={e => upload(e.target.files)} /> 
-// </label>

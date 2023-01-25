@@ -4,7 +4,7 @@ import { ReactComponent as CogIcon } from './../icons/cog.svg'
 // Style
 import './../styles/DropdownMenu.scss';
 
-import { FunctionComponent, JSXElementConstructor, PropsWithChildren, ReactNode } from "react";
+import { FunctionComponent, ReactNode } from "react";
 import axios from 'axios';
 
 interface Props {

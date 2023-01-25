@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 export const Paginator = (props: {page: number, lastPage: number, pageChanged: (page: number) => void}) => {
   const next = () => {
@@ -18,10 +17,10 @@ export const Paginator = (props: {page: number, lastPage: number, pageChanged: (
     <nav className="bottom-bar">
       <ul className="bottom-nav-list">
         <li className="bottom-nav-item">
-          <a href="#" onClick={previous}>Previous</a>
+          <a href="#!" onClick={previous}>Previous</a>
         </li>
         <li className="bottom-nav-item">
-          <a href="#" onClick={next}>Next</a>
+          <a href="#!" onClick={next}>Next</a>
         </li>
       </ul>
     </nav>

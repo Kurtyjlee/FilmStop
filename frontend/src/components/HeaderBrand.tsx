@@ -1,5 +1,5 @@
 import './../styles/Header.scss';
-import React, { FunctionComponent, ReactNode, useState } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 
 interface Props {
   icon?: JSX.Element;
